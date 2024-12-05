@@ -1,12 +1,13 @@
-import Hero from "@/components/pages-sections/Hero";
-
+import Events from "@/components/pages-sections/Events";
+import Visions from "@/components/pages-sections/Visions";
 
 export default function Home() {
   return (
     <>
-      <section className="p-3">
-        <Hero />
-      </section> 
+      <section className=" bg-black text-white px-[80px]  ">
+        <Visions />
+        <Events />
+      </section>
     </>
   );
 }
