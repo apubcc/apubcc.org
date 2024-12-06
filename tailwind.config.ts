@@ -55,9 +55,28 @@ const config: Config = {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-  		}
+  		},
+			textStroke: {
+        '1': '1px',
+      },
+      textStrokeColor: {
+        'black': '#000',
+      },
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+		require("tailwindcss-animate"),
+		function({ addUtilities } : any) {
+      const newUtilities = {
+        '.text-stroke-1': {
+          '-webkit-text-stroke-width': '1px',
+        },
+        '.text-stroke-black': {
+          '-webkit-text-stroke-color': '#000',
+        },
+      }
+      addUtilities(newUtilities)
+    }
+	],
 };
 export default config;
