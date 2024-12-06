@@ -76,3 +76,10 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+
+.mask-cover {
+  mask-image: url('/Subtract.png');
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+}
