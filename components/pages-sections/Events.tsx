@@ -9,69 +9,72 @@ type Event = {
   image: string;
 };
 
+const events: Event[] = [
+  {
+    id: 1,
+    date: "23-11-2024",
+    title: "Web3 Masterclass",
+    image: "/events.png",
+  },
+  {
+    id: 2,
+    date: "23-11-2024",
+    title: "Web3 Masterclass",
+    image: "/events.png",
+  },
+  {
+    id: 3,
+    date: "23-11-2024",
+    title: "Web3 Masterclass",
+    image: "/events.png",
+  },
+
+  {
+    id: 4,
+    date: "23-11-2024",
+    title: "Web3 Masterclass",
+    image: "/events.png",
+  },
+];
 // Main Events Component
 export default function Events() {
-  const events: Event[] = [
-    {
-      id: 1,
-      date: "23-11-2024",
-      title: "Web3 Masterclass",
-      image: "/events.png",
-    },
-    {
-      id: 2,
-      date: "23-11-2024",
-      title: "Web3 Masterclass",
-      image: "/events.png",
-    },
-    {
-      id: 3,
-      date: "23-11-2024",
-      title: "Web3 Masterclass",
-      image: "/events.png",
-    },
-
-    {
-      id: 4,
-      date: "23-11-2024",
-      title: "Web3 Masterclass",
-      image: "/events.png",
-    },
-  ];
 
   return (
-    <div className="mt-[90px] relative h-screen">
-      {/* Background Section */}
-      <div className="relative w-[45%] h-80 pt-6 bg-top">
-        {/* Background Image with Gradient Mask */}
-        <div
-          className="absolute inset-0 bg-[url('/vector.png')] bg-cover bg-center z-0"
-          style={{
-            maskImage:
-              "linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 50%)",
-            WebkitMaskImage:
-              "linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 50%)",
-            filter: "blur(6px)", // Keeps the blur subtle
-            transform: "translateY(-40px)", // Moves the background upwards
-          }}
-        ></div>
+    <>
+      <div className="mt-[90px] text-white">
 
-        {/* Content Section */}
-        <div className="relative z-10">
-          <div className="w-32">
-            <hr className="border-[#F8A02A] border-2 " />
-          </div>
-          <h1 className="text-[36px] mt-[20px] text-white">Upcoming Events</h1>
+        {/* Events List */}
+        <div className="flex gap-[20px]">
+          {events.map((event) => (
+            <EventCard key={event.id} event={event} />
+          ))}
+        </div>
+
+      </div>
+      <div className="h-[49.125rem] grid grid-cols-4 grid-rows-3 gap-3">
+        <div className="row-span-2">
+          <img src="/1.png" alt="Gallery 1" className="object-cover h-full w-full" />
+        </div>
+        <div>
+          <img src="/2.png" alt="Gallery 2" className="object-cover h-full w-full" />
+        </div>
+        <div className="col-span-2">
+          <img src="/3.png" alt="Gallery 3" className="object-cover h-full w-full" />
+        </div>
+        <div className="col-span-2">
+          <img src="/4.png" alt="Gallery 4" className="object-cover h-full w-full" />
+        </div>
+        <div className="row-span-2">
+          <img src="/5.png" alt="Gallery 5" className="object-cover h-full w-full" />
+        </div>
+        <div className="col-span-2">
+          <img src="/6.png" alt="Gallery 6" className="object-cover h-full w-full" />
+        </div>
+        <div>
+          <img src="/7.png" alt="Gallery 7" className="object-cover h-full w-full" />
         </div>
       </div>
-
-      {/* Events List */}
-      <div className="absolute top-[160px] flex gap-[20px]">
-        {events.map((event) => (
-          <EventCard key={event.id} event={event} />
-        ))}
-      </div>
-    </div>
+    </>
   );
 }
 
