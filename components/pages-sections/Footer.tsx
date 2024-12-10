@@ -5,13 +5,13 @@ import { Link } from 'next-view-transitions'
 import { Fragment } from "react";
 
 const Icons = [
-  <FaLinkedin className="w-8 h-8"/>,
-  <AiFillTikTok className="w-8 h-8"/>,
-  <FaFacebook className="w-8 h-8"/>,
-  <AiFillInstagram className="w-8 h-8"/>,
-  <FaYoutube className="w-8 h-8"/>,
-  <FaXTwitter className="w-8 h-8"/>
-]
+  { icon: <FaLinkedin className="w-8 h-8"/>, link: "https://linkedin.com/company/apubcc" },
+  { icon: <AiFillTikTok className="w-8 h-8"/>, link: "https://tiktok.com/@apubcc" },
+  { icon: <FaFacebook className="w-8 h-8"/>, link: "https://facebook.com/apubcc" },
+  { icon: <AiFillInstagram className="w-8 h-8"/>, link: "https://instagram.com/apubcc" },
+  { icon: <FaYoutube className="w-8 h-8"/>, link: "https://youtube.com/@apubcc" },
+  { icon: <FaXTwitter className="w-8 h-8"/>, link: "https://twitter.com/apubcc" }
+];
 
 const FooterLinks = [{
   general: [
@@ -73,9 +73,15 @@ export default function Footer() {
             <div className="flex gap-3">
               {
                 Icons.map((icon, index) => (
-                  <div key={index} className="w-12 h-12 border-2 border-[#F5710C] rounded-full flex justify-center items-center">
-                    {icon}
-                  </div>
+                  <a 
+                    key={index} 
+                    href={icon.link}
+                    target="_blank"
+                    rel="noopener noreferrer" 
+                    className="w-12 h-12 border-2 border-[#F5710C] rounded-full flex justify-center items-center"
+                  >
+                    {icon.icon}
+                  </a>
                 ))
               }
             </div>
@@ -85,12 +91,14 @@ export default function Footer() {
             <h3 className="text-[1.5rem] font-bold">General</h3>
             <div className="flex flex-col flex-wrap text-[#FBD954] text-[1.125rem] font-bold gap-3 h-1/2">
               {
-                FooterLinks.map((link) => (
-                  link.general.map((generalLinks, index) => (
-                    <Fragment key={index}>
-                      <Link href={generalLinks.link}>{generalLinks.title}</Link>
-                    </Fragment> 
-                  ))
+                FooterLinks.map((link, index) => (
+                  <Fragment key={index}>
+                    {link.general.map((generalLinks, index) => (
+                      <Fragment key={index}>
+                        <Link href={generalLinks.link}>{generalLinks.title}</Link>
+                      </Fragment> 
+                    ))}
+                  </Fragment>
                 ))
               }
             </div>
@@ -99,12 +107,14 @@ export default function Footer() {
             <h3 className="text-[1.5rem] font-bold">Resources</h3>
             <div className="flex flex-col flex-wrap text-[#FBD954] text-[1.125rem] font-bold gap-3 h-1/2">
               {
-                FooterLinks.map((link) => (
-                  link.resources.map((resourcesLinks, index) => (
-                    <Fragment key={index}>
-                      <Link href={resourcesLinks.link}>{resourcesLinks.title}</Link>
-                    </Fragment> 
-                  ))
+                FooterLinks.map((link, index) => (
+                  <Fragment key={index}>
+                    {link.resources.map((resourcesLinks, index) => (
+                      <Fragment key={index}>
+                        <Link href={resourcesLinks.link}>{resourcesLinks.title}</Link>
+                      </Fragment> 
+                    ))}
+                  </Fragment>
                 ))
               }
             </div>
