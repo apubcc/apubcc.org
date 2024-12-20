@@ -1,3 +1,4 @@
+import Achievements from "@/components/pages-sections/Achievements";
 import Events from "@/components/pages-sections/Events";
 import Faq from "@/components/pages-sections/Faq";
 import Footer from "@/components/pages-sections/Footer";
@@ -10,6 +11,10 @@ export default function Home() {
       <section className="px-20 py-[1.375rem]">
         <Hero />
       </section> 
+
+      <section className="px-20 pt-28">
+        <Achievements />
+      </section>
 
       <section className="px-20 pt-28">
         <Visions />

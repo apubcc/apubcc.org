@@ -89,7 +89,7 @@ export default function Footer() {
 
           <section className="pt-52 w-[18.375rem] h-[12.5]">
             <h3 className="text-[1.5rem] font-bold">General</h3>
-            <div className="flex flex-col flex-wrap text-[#FBD954] text-[1.125rem] font-bold gap-3 h-1/2">
+            <div className="flex flex-col flex-wrap text-[#FBD954] text-[1.125rem] font-bold gap-3 h-[160px]">
               {
                 FooterLinks.map((link, index) => (
                   <Fragment key={index}>
@@ -105,7 +105,7 @@ export default function Footer() {
           </section>
           <section className="pt-52 w-[18.375rem] h-[12.5]">
             <h3 className="text-[1.5rem] font-bold">Resources</h3>
-            <div className="flex flex-col flex-wrap text-[#FBD954] text-[1.125rem] font-bold gap-3 h-1/2">
+            <div className="flex flex-col flex-wrap text-[#FBD954] text-[1.125rem] font-bold gap-3">
               {
                 FooterLinks.map((link, index) => (
                   <Fragment key={index}>
