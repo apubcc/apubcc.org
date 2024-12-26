@@ -37,13 +37,7 @@ export default function Hero() {
         <main className="px-[4.6875rem] pt-[100px] relative">
           <h1 className="text-black relative z-20 text-[3.4375rem] font-extrabold w-[37.75rem] tracking-[1.1px] text-stroke-1 text-stroke-black">LEADING SOUTHEAST ASIA STUDENT BLOCKCHAIN CLUB</h1>
           <img src="/fireball.png" alt="fireball image" className="absolute z-10 top-0 left-96 xl:-top-10 xl:left-[350px] w-[668px] h-[668px]"/>
-        </main>
-
-        <aside className="flex justify-end pt-8 pr-5">
-          <Button className="shadow-[1px_1px_3.76px_#FFCB3D,_-1px_-1px_3.76px_#FFCB3D] bg-gradient-to-r from-[#F05F08] to-[#FED665] text-white w-[14.125rem] h-[3.8125rem] rounded-tl-[0.9375rem] rounded-tr-[1.5625rem] rounded-b-[1.5625rem] text-[2.25rem] font-bold">
-            Join Us
-          </Button>
-        </aside>
+        </main> 
       </div>
     </div> 
   )
