@@ -12,25 +12,25 @@ export default function Home() {
         <Hero />
       </section> 
 
-      {/* <section className="px-20 pt-28">
+      <section className="px-[0.875rem] py-[1.8125rem] lg:px-20 lg:pt-28">
         <Achievements />
       </section>
 
-      <section className="px-20 pt-28">
+      {/* <section className="px-20 pt-28">
         <Visions />
-      </section>
+      </section> */}
 
-      <img src="/Vector.png" alt="some background svg" className="absolute -z-10"/>
+      {/* <img src="/Vector.png" alt="some background svg" className="absolute -z-10"/>
       <section className="px-20 pt-28">
         <Events />
-      </section>
+      </section> */}
 
-      <img src="/faq-bg.svg" alt="some background svg" className="absolute -z-10"/>
+      {/* <img src="/faq-bg.svg" alt="some background svg" className="absolute -z-10"/>
       <section className="pt-28 px-20">
         <Faq />
-      </section>
+      </section> */}
       
-      <section className="pt-28">
+      {/* <section className="pt-28">
         <Footer />
       </section> */}
 
