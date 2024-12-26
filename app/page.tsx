@@ -18,6 +18,10 @@ export default function Home() {
 
       <section className="px-20 pt-28">
         <Visions />
+      </section>
+
+      <img src="/Vector.png" alt="some background svg" className="absolute -z-10"/>
+      <section className="px-20 pt-28">
         <Events />
       </section>
 

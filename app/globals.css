@@ -79,10 +79,17 @@ body {
 
 
 .mask-cover {
-  mask-image: url('/Subtract.png');
+  mask-image: url('/desktop-mask.svg');
   mask-repeat: no-repeat;
   mask-size: 100% 100%;
 }
+
+@media (max-width: 768px) {
+  .mask-cover {
+    mask-image: url('/mobile-mask.svg');
+  }
+}
+
 .footer-mask-cover {
   mask-image: url('/footer-mask.svg');
   mask-repeat: no-repeat;

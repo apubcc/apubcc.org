@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel";
 
 // Define the type for the event object
 type Event = {
@@ -41,16 +42,26 @@ export default function Events() {
 
   return (
     <>
-      <div className="mt-[90px] text-white">
-
+      <div className="mt-[90px] text-white pb-[4.875rem]">
+        <section className="pb-10">
+          <hr className="bg-gradient-to-r from-[#F9C646] to-[#F8A02A] w-[11.875rem] h-[0.1875rem]"/>
+          <h2 className="text-[2.375rem] font-black text-white">Upcoming Events</h2>
+        </section>
         {/* Events List */}
-        <div className="flex gap-[20px]">
-          {events.map((event) => (
-            <EventCard key={event.id} event={event} />
-          ))}
+        <div className="flex gap-[20px] max-w-[1440px]">
+          <Carousel className="w-full">
+            <CarouselContent>
+              {events.map((event) => (
+                <CarouselItem key={event.id} className="md:basis-1/2 lg:basis-1/3">
+                  <EventCard event={event} />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
         </div>
 
       </div>
+
       <div className="h-[49.125rem] grid grid-cols-4 grid-rows-3 gap-3">
         <div className="row-span-2">
           <img src="/1.png" alt="Gallery 1" className="object-cover h-full w-full" />
@@ -81,15 +92,15 @@ export default function Events() {
 // EventCard Component
 function EventCard({ event }: { event: Event }) {
   return (
-    <div className="flex font-bold mb-4  items-center gap-[20px] bg-gradient-to-r from-[#0D0D0D] to-[#371D02] p-5 rounded-md">
+    <div className="py-5 px-3 flex justify-between items-center gap-[1.25rem] w-[23.75rem] rounded-2xl bg-gradient-to-l from-[#371D02] to-[#0D0D0D]">
       <div>
-        <Image src={event.image} width={150} height={150} alt="event-poster" />
+        <img src={event.image} alt="event-poster" className="w-[150px] h-[150px]" />
       </div>
       <div>
-        <h1 className="text-[21px] ">{event.title}</h1>
-        <h2 className="text-[18px] ">{event.date}</h2>
+        <h1 className="text-[1.3125rem] font-bold">{event.title}</h1>
+        <h2 className="text-[1.125rem] font-bold">{event.date}</h2>
 
-        <button className="bg-[#82380B] px-6 rounded-md text-[16px] py-1  mt-[20px]">
+        <button className="bg-[#82380B] px-6 rounded-md text-[16px] py-1 w-full mt-[20px]">
           Book Ticket
         </button>
       </div>
