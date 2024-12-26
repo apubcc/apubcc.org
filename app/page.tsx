@@ -8,11 +8,11 @@ import Visions from "@/components/pages-sections/Visions";
 export default function Home() {
   return (
     <>
-      <section className="px-20 py-[1.375rem]">
+      <section className="px-[0.875rem] py-[1.8125rem] lg:px-20 lg:py-[1.375rem]">
         <Hero />
       </section> 
 
-      <section className="px-20 pt-28">
+      {/* <section className="px-20 pt-28">
         <Achievements />
       </section>
 
@@ -32,7 +32,7 @@ export default function Home() {
       
       <section className="pt-28">
         <Footer />
-      </section>
+      </section> */}
 
     </>
   );

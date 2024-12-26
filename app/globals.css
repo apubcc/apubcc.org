@@ -86,7 +86,7 @@ body {
 
 @media (max-width: 768px) {
   .mask-cover {
-    mask-image: url('/mobile-mask.svg');
+    mask-image: url('/mobile-mask.png');
   }
 }
 
