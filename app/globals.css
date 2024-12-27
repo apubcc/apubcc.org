@@ -95,3 +95,14 @@ body {
   mask-repeat: no-repeat;
   mask-size: 100% 100%;
 }
+
+.vision {
+  float: right;
+  shape-outside: url('/vision.png');
+  shape-margin: 2rem;
+}
+.mission {
+  float: left;
+  shape-outside: url('/mission.png');
+  shape-margin: 2rem;
+}

@@ -3,7 +3,7 @@ import Events from "@/components/pages-sections/Events";
 import Faq from "@/components/pages-sections/Faq";
 import Footer from "@/components/pages-sections/Footer";
 import Hero from "@/components/pages-sections/Hero";
-import Visions from "@/components/pages-sections/Visions";
+import VisionAndMission from "@/components/pages-sections/Visions";
 
 export default function Home() {
   return (
@@ -16,9 +16,9 @@ export default function Home() {
         <Achievements />
       </section>
 
-      {/* <section className="px-20 pt-28">
-        <Visions />
-      </section> */}
+      <section className="px-7 pt-8 lg:px-20 lg:pt-28">
+        <VisionAndMission />
+      </section>
 
       {/* <img src="/Vector.png" alt="some background svg" className="absolute -z-10"/>
       <section className="px-20 pt-28">
