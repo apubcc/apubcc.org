@@ -1,9 +1,9 @@
-import Achievements from "@/components/pages-sections/Achievements";
-import Events from "@/components/pages-sections/Events";
-import Faq from "@/components/pages-sections/Faq";
-import Footer from "@/components/pages-sections/Footer";
-import Hero from "@/components/pages-sections/Hero";
-import VisionAndMission from "@/components/pages-sections/Visions";
+import Achievements from "@/components/home/Achievements";
+import Events from "@/components/home/Events";
+import Faq from "@/components/home/Faq";
+import Footer from "@/components/home/Footer";
+import Hero from "@/components/home/Hero";
+import VisionAndMission from "@/components/home/Visions";
 
 export default function Home() {
   return (
