@@ -62,26 +62,26 @@ export default function Events() {
 
       </div>
 
-      <div className="h-[49.125rem] grid grid-cols-2 grid-rows-6 lg:grid-cols-4 lg:grid-rows-3 gap-3">
-        <div className="col-span-1 row-span-2 lg:row-span-2">
-          <img src="/1.png" alt="Gallery 1" className="rounded-[3px] object-cover h-full w-full" />
+      <div className="h-auto max-h-[49.125rem] grid grid-cols-2 grid-auto-rows lg:grid-cols-4 gap-3">
+        <div className="col-span-1 row-span-2 aspect-[3/5]">
+          <img src="/1.png" alt="Gallery 1" className="object-cover h-full w-full" />
         </div>
-        <div className="col-start-2 row-start-1">
+        <div className="aspect-square">
           <img src="/2.png" alt="Gallery 2" className="object-cover h-full w-full" />
         </div>
-        <div className="col-start-2 row-start-2 hidden lg:block">
-          <img src="/3.png" alt="Gallery 3" className="lg:hidden object-cover h-full w-full" />
+        <div className="hidden lg:block aspect-square">
+          <img src="/3.png" alt="Gallery 3" className="object-cover h-full w-full" />
         </div>
-        <div className="col-span-2 hidden lg:block">
+        <div className="col-span-2 hidden lg:block aspect-[2/1]">
           <img src="/4.png" alt="Gallery 4" className="object-cover h-full w-full" />
         </div>
-        <div className="col-start-2 row-span-2 row-start-2">
-          <img src="/5.png" alt="Gallery 5" className="rounded-[3px] object-cover h-full w-full" />
+        <div className="col-start-2 row-span-2 aspect-[3/5]">
+          <img src="/5.png" alt="Gallery 5" className="object-cover h-full w-full" />
         </div>
-        <div className="col-span-2 hidden lg:block">
+        <div className="col-span-2 hidden lg:block aspect-[2/1]">
           <img src="/6.png" alt="Gallery 6" className="object-cover h-full w-full" />
         </div>
-        <div className="col-start-1 row-start-3">
+        <div className="aspect-square">
           <img src="/7.png" alt="Gallery 7" className="object-cover h-full w-full" />
         </div>
       </div>

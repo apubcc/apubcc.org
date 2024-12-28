@@ -25,10 +25,10 @@ export default function Home() {
         <Events />
       </section>
 
-      {/* <img src="/faq-bg.svg" alt="some background svg" className="absolute -z-10"/>
+      {/* <img src="/faq-bg.svg" alt="some background svg" className="absolute -z-10"/> */}
       <section className="px-7 pt-8 lg:px-20 lg:pt-28">
         <Faq />
-      </section> */}
+      </section>
       
       {/* <section className="pt-28">
         <Footer />
