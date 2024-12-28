@@ -20,13 +20,13 @@ export default function Home() {
         <VisionAndMission />
       </section>
 
-      {/* <img src="/Vector.png" alt="some background svg" className="absolute -z-10"/>
-      <section className="px-20 pt-28">
+      {/* <img src="/Vector.png" alt="some background svg" className="absolute -z-10"/> */}
+      <section className="px-7 pt-8 lg:px-20 lg:pt-28">
         <Events />
-      </section> */}
+      </section>
 
       {/* <img src="/faq-bg.svg" alt="some background svg" className="absolute -z-10"/>
-      <section className="pt-28 px-20">
+      <section className="px-7 pt-8 lg:px-20 lg:pt-28">
         <Faq />
       </section> */}
       

@@ -44,15 +44,15 @@ export default function Events() {
     <>
       <div className="mt-[90px] text-white pb-[4.875rem]">
         <section className="pb-10">
-          <hr className="bg-gradient-to-r from-[#F9C646] to-[#F8A02A] w-[11.875rem] h-[0.1875rem]"/>
-          <h2 className="text-[2.375rem] font-black text-white">Upcoming Events</h2>
+          <hr className="bg-gradient-to-r from-[#F9C646] to-[#F8A02A] w-[6.25rem] lg:w-[11.875rem] h-[0.1875rem]"/>
+          <h2 className="text-[1.375rem] lg:text-[2.375rem] font-black text-white">Upcoming Events</h2>
         </section>
         {/* Events List */}
         <div className="flex gap-[20px] max-w-[1440px]">
           <Carousel className="w-full">
             <CarouselContent>
               {events.map((event) => (
-                <CarouselItem key={event.id} className="md:basis-1/2 lg:basis-1/3">
+                <CarouselItem key={event.id} className="sm:basis-[15.1875rem] md:basis-1/2 lg:basis-1/3">
                   <EventCard event={event} />
                 </CarouselItem>
               ))}
@@ -62,26 +62,26 @@ export default function Events() {
 
       </div>
 
-      <div className="h-[49.125rem] grid grid-cols-4 grid-rows-3 gap-3">
-        <div className="row-span-2">
-          <img src="/1.png" alt="Gallery 1" className="object-cover h-full w-full" />
+      <div className="h-[49.125rem] grid grid-cols-2 grid-rows-6 lg:grid-cols-4 lg:grid-rows-3 gap-3">
+        <div className="col-span-1 row-span-2 lg:row-span-2">
+          <img src="/1.png" alt="Gallery 1" className="rounded-[3px] object-cover h-full w-full" />
         </div>
-        <div>
+        <div className="col-start-2 row-start-1">
           <img src="/2.png" alt="Gallery 2" className="object-cover h-full w-full" />
         </div>
-        <div className="col-span-2">
-          <img src="/3.png" alt="Gallery 3" className="object-cover h-full w-full" />
+        <div className="col-start-2 row-start-2 hidden lg:block">
+          <img src="/3.png" alt="Gallery 3" className="lg:hidden object-cover h-full w-full" />
         </div>
-        <div className="col-span-2">
+        <div className="col-span-2 hidden lg:block">
           <img src="/4.png" alt="Gallery 4" className="object-cover h-full w-full" />
         </div>
-        <div className="row-span-2">
-          <img src="/5.png" alt="Gallery 5" className="object-cover h-full w-full" />
+        <div className="col-start-2 row-span-2 row-start-2">
+          <img src="/5.png" alt="Gallery 5" className="rounded-[3px] object-cover h-full w-full" />
         </div>
-        <div className="col-span-2">
+        <div className="col-span-2 hidden lg:block">
           <img src="/6.png" alt="Gallery 6" className="object-cover h-full w-full" />
         </div>
-        <div>
+        <div className="col-start-1 row-start-3">
           <img src="/7.png" alt="Gallery 7" className="object-cover h-full w-full" />
         </div>
       </div>
@@ -92,18 +92,20 @@ export default function Events() {
 // EventCard Component
 function EventCard({ event }: { event: Event }) {
   return (
-    <div className="py-5 px-3 flex justify-between items-center gap-[1.25rem] w-[23.75rem] rounded-2xl bg-gradient-to-l from-[#371D02] to-[#0D0D0D]">
+    <div className="py-[0.8125rem] px-2 lg:py-5 flex items-center gap-3 lg:gap-[1.25rem] w-[15.1875rem] h-32 lg:w-[23.75rem] rounded-2xl bg-gradient-to-l from-[#371D02] to-[#0D0D0D]">
       <div>
-        <img src={event.image} alt="event-poster" className="w-[150px] h-[150px]" />
+        <img src={event.image} alt="event-poster" className=" lg:w-[150px] lg:h-[150px]" width={96} height={101}/>
       </div>
-      <div>
-        <h1 className="text-[1.3125rem] font-bold">{event.title}</h1>
-        <h2 className="text-[1.125rem] font-bold">{event.date}</h2>
+      <aside className="flex flex-col gap-2 lg:gap-5">
+        <div>
+          <h1 className="text-[0.8125rem] lg:text-[1.3125rem] font-bold">{event.title}</h1>
+          <h2 className="text-[0.75rem] lg:text-[1.125rem] font-bold">{event.date}</h2>
+        </div>
 
-        <button className="bg-[#82380B] px-6 rounded-md text-[16px] py-1 w-full mt-[20px]">
+        <button className="text-[0.75rem] bg-[#82380B] lg:px-6 py-1 rounded-md lg:text-[16px] w-full">
           Book Ticket
         </button>
-      </div>
+      </aside>
     </div>
   );
 }
