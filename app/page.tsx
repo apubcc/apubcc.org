@@ -30,9 +30,9 @@ export default function Home() {
         <Faq />
       </section>
       
-      {/* <section className="pt-28">
+      <section className="pt-8 lg:pt-28">
         <Footer />
-      </section> */}
+      </section>
 
     </>
   );
