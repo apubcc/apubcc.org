@@ -20,11 +20,7 @@ const config = {
       converter: "edge",
       proxyExternalRequest: "fetch",
     },
-  },
-
-  dangerous: {
-    enableCacheInterception: false,
-  },
+  } 
 };
 
 export default config;
