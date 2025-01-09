@@ -1,6 +1,5 @@
-import Image from "next/image";
 import React from "react";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel";
+import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
 
 // Define the type for the event object
 type Event = {
