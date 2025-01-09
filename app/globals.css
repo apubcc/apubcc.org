@@ -78,31 +78,7 @@ body {
 }
 
 
-.mask-cover {
-  mask-image: url('/desktop-mask.svg');
-  mask-repeat: no-repeat;
-  mask-size: 100% 100%;
-}
 
-@media (max-width: 768px) {
-  .mask-cover {
-    mask-image: url('/mobile-mask.png');
-  }
-}
-
-.footer-mask-cover {
-  mask-image: url('/footer-mask.svg');
-  mask-repeat: no-repeat;
-  mask-size: 100% 100%;
-}
-@media (max-width: 768px) {
-  .footer-mask-cover {
-    mask-image: url('/footer-mobile-mask.svg');
-    mask-repeat: no-repeat;
-    mask-size: contain;
-    mask-position: bottom;
-  }
-}
 
 .vision {
   float: right;

@@ -26,7 +26,7 @@ const achievements = [
 
 export default function Achievements() {
   return (
-    <div className="relative min-h-[27rem] lg:min-h-[36.25rem] w-full">
+    <div className="relative min-h-[27rem] lg:h-[36.25rem] w-full">
       <div className="absolute inset-0 bg-gradient-to-b from-[rgba(251,191,58,0.30)] via-[rgba(245,113,12,0.30)] to-[rgba(245,113,12,0.30)] blur-[137.7px]"></div>
 
       {/* contents */}
@@ -39,7 +39,7 @@ export default function Achievements() {
 
 function DesktopContent() {
   return (
-    <main className="relative p-8 hidden lg:block">
+    <main className="p-8 hidden lg:block">
       {achievements.map((achievement, index) => (
         <aside key={index} className={cn("group absolute", {
           'left-80 top-8': achievement.position === 'upper left',
@@ -47,7 +47,7 @@ function DesktopContent() {
           'right-80 top-8': achievement.position === 'upper right',
           'right-56 bottom-56': achievement.position === 'bottom right'
         })}>
-          <div className="relative w-20 h-20 cursor-pointer">
+          <div className="relative lg:w-20 lg:h-20 cursor-pointer">
             {/* Largest circle (r=40) with 0.1 opacity - appears last and stays */}
             <div className="absolute bg-[#FBD954] group-hover:invisible opacity-0 rounded-full w-20 h-20 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 animate-[circle-fade-01_1.5s_ease-in-out_infinite]"></div>
             
@@ -74,7 +74,7 @@ function DesktopContent() {
         </aside>
       ))}
 
-      <img src="/fireball.png" alt="fireball" className="mx-auto" />
+      {/* <img src="/fireball.png" alt="fireball" className="mx-auto"  /> */}
     </main>
   )
 }
@@ -83,7 +83,7 @@ function MobileContent() {
   return (
     <>
       {achievements.map((achievement, index) => (
-        <main key={index} className={cn("flex items-center justify-center relative pt-14 pb-20 last:pb-0")}>
+        <main key={index} className={cn("flex items-center justify-center relative pt-14 pb-20 last:pb-0 lg:hidden sm:w-10/12 mx-auto")}>
           {/* Timeline dot - centered */}
           <div>
             <div className="bg-[#FBD954] rounded-full w-3 h-3" />
@@ -91,10 +91,10 @@ function MobileContent() {
 
           {/* Content - alternating left and right */}
           <div className={cn(
-            "text-white w-[135px] absolute top-0",
-            index % 2 === 0 ? "-left-1 text-right" : "-right-1 text-left"
+            "text-white w-[135px] absolute top-0 sm:w-[250px]",
+            index % 2 === 0 ? "left-2 text-right" : "right-2 text-left"
           )}>
-            <h3 className="text-xl font-black">
+            <h3 className="text-xl font-black whitespace-nowrap">
               {achievement.title}
             </h3>
             <p className="text-[0.8125rem] font-semibold">
