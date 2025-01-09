@@ -78,13 +78,15 @@ body {
 }
 
 
-.mask-cover {
-  mask-image: url('/Subtract.png');
-  mask-repeat: no-repeat;
-  mask-size: 100% 100%;
+
+
+.vision {
+  float: right;
+  shape-outside: url('/vision.png');
+  shape-margin: 2rem;
 }
-.footer-mask-cover {
-  mask-image: url('/footer-mask.svg');
-  mask-repeat: no-repeat;
-  mask-size: 100% 100%;
+.mission {
+  float: left;
+  shape-outside: url('/mission.png');
+  shape-margin: 2rem;
 }

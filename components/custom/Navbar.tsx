@@ -19,7 +19,7 @@ const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
     const Comp = asChild ? Slot : "nav"
     return (
       <Comp
-        className={cn(className, "bg-black rounded-[1.25rem] flex justify-between px-[2.125rem]")}
+        className={cn(className, "bg-black rounded-[1.25rem] hidden lg:flex justify-between px-[2.125rem]")}
         ref={ref}
         {...props}
       />

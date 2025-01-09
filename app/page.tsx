@@ -1,27 +1,36 @@
-import Events from "@/components/pages-sections/Events";
-import Faq from "@/components/pages-sections/Faq";
-import Footer from "@/components/pages-sections/Footer";
-import Hero from "@/components/pages-sections/Hero";
-import Visions from "@/components/pages-sections/Visions";
+import Achievements from "@/components/home/Achievements";
+import Events from "@/components/home/Events";
+import Faq from "@/components/home/Faq";
+import Footer from "@/components/home/Footer";
+import Hero from "@/components/home/Hero";
+import VisionAndMission from "@/components/home/VisionsMissions";
 
 export default function Home() {
   return (
     <>
-      <section className="px-20 py-[1.375rem]">
+      <section className="px-[0.875rem] py-[1.8125rem] lg:px-20 lg:py-[1.375rem]">
         <Hero />
       </section> 
 
-      <section className="px-20 pt-28">
-        <Visions />
+      <section className="px-[0.875rem] py-[1.8125rem] md:py-24 lg:px-20 lg:pt-28">
+        <Achievements />
+      </section>
+
+      <section className="px-7 pt-8 md:px-20 md:pt-28">
+        <VisionAndMission />
+      </section>
+
+      <img src="/Vector.png" alt="some background svg" className="absolute -z-10"/>
+      <section className="px-7 pt-8 md:px-20 md:pt-28">
         <Events />
       </section>
 
       <img src="/faq-bg.svg" alt="some background svg" className="absolute -z-10"/>
-      <section className="pt-28 px-20">
+      <section className="px-7 pt-8 md:px-20 md:pt-28">
         <Faq />
       </section>
       
-      <section className="pt-28">
+      <section className="pt-8 md:pt-20 lg:pt-28">
         <Footer />
       </section>
 
