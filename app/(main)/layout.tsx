@@ -1,4 +1,3 @@
-import Footer from "@/components/home/Footer";
 import NavbarRootLayout from "./NavbarRootLayout";
 
 export default function RootLayout({
