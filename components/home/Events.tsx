@@ -48,11 +48,11 @@ export default function Events() {
         </section>
         
         {/* Events List */}
-        <div className="flex gap-[20px] max-w-[1440px]">
+        <div className="flex gap-[20px] max-w-6xl">
           <Carousel className="w-full">
             <CarouselContent>
               {events.map((event) => (
-                <CarouselItem key={event.id} className="sm:basis-[15.1875rem] md:basis-1/2 lg:basis-[46%] xl:basis-1/3">
+                <CarouselItem key={event.id} className="sm:basis-[15.1875rem] md:basis-1/2 lg:basis-[45%]">
                   <EventCard event={event} />
                 </CarouselItem>
               ))}
@@ -92,7 +92,7 @@ export default function Events() {
 // EventCard Component
 function EventCard({ event }: { event: Event }) {
   return (
-    <div className="py-[0.8125rem] px-2 lg:py-5 flex items-center gap-3 lg:gap-[1.25rem] w-[15.1875rem] h-32 lg:h-[11.875rem] lg:w-[23.75rem] rounded-2xl bg-gradient-to-l from-[#371D02] to-[#0D0D0D]">
+    <div className="py-[0.8125rem] px-2 lg:py-5 flex items-center gap-3 lg:gap-[1.25rem] w-[15.1875rem] h-32 lg:h-[11rem] lg:w-[23rem] rounded-2xl bg-gradient-to-l from-[#371D02] to-[#0D0D0D]">
       <div>
         <img src={event.image} alt="event-poster" className=" lg:w-[150px] lg:h-[150px]" width={96} height={101}/>
       </div>

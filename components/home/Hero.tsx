@@ -1,24 +1,19 @@
 import {Navbar, NavbarItem} from "../custom/navbar";
 
-import Image from "next/image";
+import { Button } from "../ui/button";
 
 export default function Hero() {
+
   return (
-    <div className="max-w-[1440px] mx-auto h-[12.75rem] sm:h-full lg:h-[38rem] rounded-3xl relative">
-
-      <section className="">
-        <Image src={"/hero-mobile-bg.png"} alt={"hero mobile background"} width={362} height={204} className="w-full h-full object-cover"/>
-      </section>
-      
-      <section className="absolute z-10 top-0">
-        <header className="flex gap-24">
-
-          <section className="w-[28%] md:w-[39%] lg:w-[18%] lg:h-[15%]">
-            <img src="/apubcc-horizontal.png" alt="apubcc horizontal logo" className="w-full h-full object-contain" />
-          </section>
+    <div className="max-w-7xl h-[12.75rem] md:h-[22rem] lg:h-[28rem] rounded-3xl bg-[url('/hero-mobile-bg.png')] lg:bg-[url('/hero-desktop-bg.png')] bg-cover flex flex-col relative">
+      <header className="flex gap-[7px] md:h-16 xl:h-20 items-center">
+        <section className="w-[102px] md:w-[180px] lg:w-[200px] xl:w-[250px]">
+          <img src="/apubcc-horizontal.png" alt="apubcc horizontal logo" className="w-full h-full object-contain" />
+        </section>
 
 
-          <Navbar className="lg:w-[45.1875rem] lg:h-[3.125rem] lg:mt-6">
+        <section className="flex items-center gap-3 justify-end w-full pr-[10px]">
+          <Navbar className="lg:w-[33rem] lg:h-[2.69rem] xl:w-[38rem] xl:h-[2.5rem]">
             <NavbarItem>
               Events
             </NavbarItem>
@@ -35,13 +30,31 @@ export default function Hero() {
               Contact Us
             </NavbarItem>
           </Navbar>
-        </header>
+        
+          <Button className="lg:block hidden bg-white text-black text-[1.3125rem] font-bold leading-normal rounded-[20px] border border-[#FF2200] shadow-[0_0_30px_0_#FF2200]">
+            Join Us
+          </Button>
+        </section>
+      </header>
 
-        <main className="pl-[1.1875rem] md:pl-[4rem] lg:pr-[7rem] pt-[1.875rem] md:pt-[6.25rem] lg:px-[4.6875rem] relative">
-          <h1 className="text-black relative z-20 text-xl md:text-5xl lg:text-[3.4375rem] font-extrabold w-[13.1875rem] md:w-[30rem] lg:w-[37.75rem] tracking-[1.1px] text-stroke-1 text-stroke-black">LEADING SOUTHEAST ASIA STUDENT BLOCKCHAIN CLUB</h1>
-          <img src="/fireball.png" alt="fireball image" className="absolute z-10 top-5 left-40 md:left-96 w-[9.5rem] h-[9.5rem] md:w-[20rem] md:h-[20rem] lg:w-[400px] lg:h-[400px] xl:-top-10 xl:left-[350px]"/>
-        </main> 
-      </section>
+      <main className="relative flex-1 flex items-center px-6"> 
+          <h1 className="text-black text-xl md:text-5xl lg:text-[3.4375rem] font-extrabold w-[13.1875rem] md:w-[30rem] lg:w-[37.75rem] tracking-[1.1px] text-stroke-1 text-stroke-black relative z-10">
+            LEADING SOUTHEAST ASIA STUDENT BLOCKCHAIN CLUB
+          </h1>
+
+          <img 
+            src="/fireball.png" 
+            alt="fireball image" 
+            className="absolute right-5 top-1/2 transform -translate-y-1/2 z-[1]
+              w-[150px] h-[150px]    /* smallest screens */
+              min-[425px]:w-[200px] min-[425px]:h-[200px]    /* small screens */
+              sm:w-[250px] sm:h-[250px]    /* small screens */
+              md:w-[280px] md:h-[280px]    /* medium screens */
+              lg:w-[350px] lg:h-[350px]    /* large screens */
+              xl:w-[400px] xl:h-[400px]    /* extra large screens */
+              object-contain"               /* maintains aspect ratio */
+          />
+      </main> 
     </div> 
   )
 }

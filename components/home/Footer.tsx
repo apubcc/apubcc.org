@@ -76,7 +76,7 @@ function DesktopFooter() {
   return (
     <footer className="hidden lg:block bg-[url('/footer-desktop-bg.svg')] bg-[length:100%_109%] bg-no-repeat h-[38rem]">
 
-      <main className="h-full px-[1.875rem] xl:pl-[3.75rem] space-y-[2.25rem] flex gap-20 xl:gap-[12.5rem]">
+      <main className="h-full px-[1.875rem] xl:pl-[3.75rem] space-y-[2.25rem] flex gap-20">
         <section className="pt-[11rem] space-y-9">
           <img src="/apubcc-horizontal.png" alt="APUBCC Horizontal Logo" className="w-[19.689125rem] h-24 bg-black rounded-3xl" />
           <p className="text-[1.3125rem] font-semibold text-white w-[19rem]">Say something, talk about BCC. briefly intro on BCC</p>

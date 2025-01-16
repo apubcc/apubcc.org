@@ -91,10 +91,10 @@ function MobileContent() {
 
           {/* Content - alternating left and right */}
           <div className={cn(
-            "text-white w-[135px] absolute top-0 sm:w-[250px]",
+            "text-white max-[374px]:w-[120px] min-[374px]:w-[135px] absolute top-0 sm:w-[250px]",
             index % 2 === 0 ? "left-2 text-right" : "right-2 text-left"
           )}>
-            <h3 className="text-xl font-black whitespace-nowrap">
+            <h3 className="max-[374px]:text-lg max-[374px]:whitespace-normal min-[374px]:text-xl font-black whitespace-nowrap">
               {achievement.title}
             </h3>
             <p className="text-[0.8125rem] font-semibold">
