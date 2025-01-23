@@ -30,7 +30,7 @@ export default function Home() {
         <Faq />
       </section>
       
-      <section className="pt-8 md:pt-20 lg:pt-28 lg:px-20 h-[68svh] justify-center flex items-end bg-gradient-to-b from-[rgba(238,145,89,0)] from-[17.28%] to-[#F16007] to-[73%]">
+      <section className="pt-8 md:pt-20 lg:pt-28 lg:px-20 h-[68svh] justify-center flex items-end bg-gradient-to-b from-[rgba(238,145,89,0)] from-[17.28%] to-[#F16109] to-[73%]">
         <Footer />
       </section>
 

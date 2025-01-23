@@ -13,7 +13,7 @@ export default function Hero() {
 
 
         <section className="flex items-center gap-3 justify-end w-full pr-[10px]">
-          <Navbar className="lg:w-[33rem] lg:h-[2.69rem] xl:w-[38rem] xl:h-[2.5rem]">
+          <Navbar className="lg:w-[33rem] lg:h-[2.69rem] xl:w-[38rem] xl:h-[2.5rem] lg:flex hidden">
             <NavbarItem href="/events">
               Events
             </NavbarItem>
