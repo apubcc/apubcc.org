@@ -14,24 +14,21 @@ export default function Hero() {
 
         <section className="flex items-center gap-3 justify-end w-full pr-[10px]">
           <Navbar className="lg:w-[33rem] lg:h-[2.69rem] xl:w-[38rem] xl:h-[2.5rem]">
-            <NavbarItem>
+            <NavbarItem href="/events">
               Events
             </NavbarItem>
-            <NavbarItem>
+            <NavbarItem href="/resources">
               Resources
             </NavbarItem>
-            <NavbarItem>
+            <NavbarItem href="/about-us">
               About Us
             </NavbarItem>
-            <NavbarItem>
-              FAQ
-            </NavbarItem>
-            <NavbarItem>
+            <NavbarItem href="/contact-us">
               Contact Us
             </NavbarItem>
           </Navbar>
         
-          <Button className="lg:block hidden bg-white text-black text-[1.3125rem] font-bold leading-normal rounded-[20px] border border-[#FF2200] shadow-[0_0_30px_0_#FF2200]">
+          <Button className="lg:flex hidden bg-white text-black text-[1.3125rem] font-bold leading-normal rounded-[20px] border border-[#FF2200] shadow-[0_0_30px_0_#FF2200]">
             Join Us
           </Button>
         </section>

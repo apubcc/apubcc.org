@@ -10,9 +10,8 @@ export interface NavbarProps
 }
 
 export interface NavbarItemProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  extends Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> {
   href: string
-  asChild?: boolean
 }
 
 const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
@@ -20,7 +19,7 @@ const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
     const Comp = asChild ? Slot : "nav"
     return (
       <Comp
-        className={cn(className, "bg-black rounded-[1.25rem] hidden lg:flex justify-between px-[2.125rem]")}
+        className={cn(className, "bg-black rounded-[1.25rem] hidden lg:flex justify-between px-[2.125rem] items-center")}
         ref={ref}
         {...props}
       />
@@ -29,17 +28,15 @@ const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
 )
 Navbar.displayName = "Navbar"
 
-const NavbarItem = React.forwardRef<HTMLButtonElement, NavbarItemProps>(
-  ({ href, className, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
+const NavbarItem = React.forwardRef<HTMLAnchorElement, NavbarItemProps>(
+  ({ href, className, ...props }, ref) => {
     return (
-      <Link href={href}>
-        <Comp
-          className={cn(className, "text-white text-xl font-bold leading-normal")}
-          ref={ref}
-          {...props}
-        />
-      </Link>
+      <Link 
+        ref={ref}
+        href={href}
+        className={cn(className, "text-white text-xl font-bold leading-normal")}
+        {...props}
+      />
     )
   }
 )

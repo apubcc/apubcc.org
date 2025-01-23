@@ -9,11 +9,10 @@ export default function NavbarRootLayout() {
         </div>
 
         <Navbar className="w-full h-[3.125rem] rounded-[20px]">
-          <NavbarItem>Events</NavbarItem>
-          <NavbarItem>Resources</NavbarItem>
-          <NavbarItem>About Us</NavbarItem>
-          <NavbarItem>FAQ</NavbarItem>
-          <NavbarItem>Contact Us</NavbarItem>
+          <NavbarItem href="/events">Events</NavbarItem>
+          <NavbarItem href="/resources">Resources</NavbarItem>
+          <NavbarItem href="/about-us">About Us</NavbarItem>
+          <NavbarItem href="/contact-us">Contact Us</NavbarItem>
         </Navbar>
 
         <Button className="lg:flex hidden bg-white text-black text-[1.3125rem] font-bold leading-normal rounded-[20px] border border-[#FF2200] shadow-[0_0_30px_0_#FF2200] ">
