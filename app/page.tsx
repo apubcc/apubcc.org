@@ -8,11 +8,11 @@ import VisionAndMission from "@/components/home/VisionsMissions";
 export default function Home() {
   return (
     <>
-      <section className="px-[0.875rem] py-[1.8125rem] md:px-20 lg:py-[1.375rem] max-w-6xl mx-auto">
+      <section className="px-[0.875rem] py-[1.8125rem] md:px-20 lg:px-32 lg:py-[3.5rem]">
         <Hero />
       </section> 
 
-      <section className="px-[0.875rem] py-[1.8125rem] md:py-24 lg:px-20 lg:pt-28 max-w-6xl mx-auto">
+      {/* <section className="px-[0.875rem] py-[1.8125rem] md:py-24 lg:px-20 lg:pt-28 max-w-6xl mx-auto">
         <Achievements />
       </section>
 
@@ -32,7 +32,7 @@ export default function Home() {
       
       <section className="pt-8 md:pt-20 lg:pt-28 lg:px-20 h-[68svh] justify-center flex items-end bg-gradient-to-b from-[rgba(238,145,89,0)] from-[17.28%] to-[#F16109] to-[73%]">
         <Footer />
-      </section>
+      </section> */}
 
     </>
   );
