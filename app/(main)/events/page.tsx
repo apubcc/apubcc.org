@@ -1,9 +1,18 @@
-import Footer from "@/components/home/Footer";
+import { getNotionEvents } from "./notion-actions"
+import { HydrationBoundary, dehydrate } from '@tanstack/react-query'
+import { getQueryClient } from '@/app/get-query-client'
+import { queryOptions } from '@tanstack/react-query'
+import EventList from "./_components/event-list"
+import { eventsOptions } from "./notion-options"
 
-export default function EventsPage() {
+export default async function EventsPage() {
+  const queryClient = getQueryClient()
+  
+  await queryClient.prefetchQuery(eventsOptions)
+  const events = queryClient.getQueryData(eventsOptions.queryKey)
+  
   return (
     <>
-
       <div className="relative">
         <div className="h-[50svh] flex items-center justify-center relative">
           <img src="/events-desktop-bg.png" alt="Events Desktop Background" className="absolute top-0 left-0 right-0 w-full h-full -z-10" />
@@ -26,14 +35,22 @@ export default function EventsPage() {
               </svg>
             </section>
 
-            <section className="flex flex-col justify-center items-center text-center px-4">
-              <div className="mb-8">
-                <img src="/events-rocket.png" alt="Rocket Graphics" className="w-24 h-24 md:w-32 md:h-32" />
-              </div>
+            {(!events || events.length === 0) ? (
+              <section className="flex flex-col justify-center items-center text-center px-4">
+                <div className="mb-8">
+                  <img src="/events-rocket.png" alt="Rocket Graphics" className="w-24 h-24 md:w-32 md:h-32" />
+                </div>
 
-              <p className="text-base md:text-[1.25rem] font-bold text-white mb-2">Oops! There are no upcoming event right now</p>
-              <p className="text-base md:text-[1.25rem] font-bold text-white">Stay tuned for updates or check back soon!</p>
-            </section> 
+                <p className="text-base md:text-[1.25rem] font-bold text-white mb-2">Oops! There are no upcoming event right now</p>
+                <p className="text-base md:text-[1.25rem] font-bold text-white">Stay tuned for updates or check back soon!</p>
+              </section>
+            ) : (
+              <section>
+                <HydrationBoundary state={dehydrate(queryClient)}>
+                  <EventList />
+                </HydrationBoundary>
+              </section>
+            )}
           </div>
         </main> 
       </div>

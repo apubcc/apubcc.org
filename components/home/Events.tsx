@@ -9,6 +9,15 @@ type Event = {
   image: string;
 };
 
+export type NotionEvent = {
+  id: string;
+  name: string;
+  date: string;
+  link: string;
+  status: 'Upcoming' | 'Past';
+  poster: string;
+};
+
 const events: Event[] = [
   {
     id: 1,
@@ -90,7 +99,7 @@ export default function Events() {
 }
 
 // EventCard Component
-function EventCard({ event }: { event: Event }) {
+export function EventCard({ event }: { event: Event }) {
   return (
     <div className="py-[0.8125rem] px-2 lg:py-5 flex items-center gap-3 lg:gap-[1.25rem] w-[15.1875rem] h-32 lg:h-[11rem] lg:w-[23rem] rounded-2xl bg-gradient-to-l from-[#371D02] to-[#0D0D0D]">
       <div>

@@ -3,6 +3,7 @@ import {Nunito} from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ViewTransitions } from 'next-view-transitions'
+import Providers from './providers'
 
 export const metadata: Metadata = {
   title: "APUBCC",
@@ -25,7 +26,9 @@ export default function RootLayout({
         <body
           className={cn("antialiased bg-black", nunito.className)}
         >
-          {children}
+          <Providers>
+            {children}
+          </Providers>
         </body>
       </html>
     </ViewTransitions>

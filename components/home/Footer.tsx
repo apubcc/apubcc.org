@@ -64,159 +64,74 @@ const FooterLinks = [{
 
 export default function Footer() {
   return (
-    <>
-      <DesktopFooter />
-      <MobileFooter />
-    </>
-  )
-}
-
-
-function DesktopFooter() {
-  return (
-    <footer className="hidden lg:flex h-fit items-end pb-[2.375rem] gap-32 xl:gap-40">
-      
-      <section className="flex flex-col gap-[2.3125rem]">
-        <div className="bg-black rounded-[1.5625rem] w-fit">
-          <img src="/apubcc-horizontal.png" alt="APUBCC Horizontal Logo" className="" width={315} height={100}/> 
+    <footer className="flex flex-col px-6 md:px-12 lg:px-0 py-8 lg:pb-[2.375rem] gap-8 lg:flex-row lg:items-end lg:gap-32 xl:gap-40">
+      <section className="flex flex-col gap-6 lg:gap-[2.3125rem]">
+        <div className="bg-black rounded-[1.25rem] lg:rounded-[1.5625rem] w-fit">
+          <img 
+            src="/apubcc-horizontal.png" 
+            alt="APUBCC Horizontal Logo" 
+            className="w-48 md:w-64 lg:w-[315px] h-auto"
+          /> 
         </div>
 
-        <p className="text-white text-[1.3125rem] font-semibold w-[20rem]">For collaboration, please contact info@apubcc.org</p>
+        <p className="text-white text-base md:text-lg lg:text-[1.3125rem] font-semibold lg:w-[20rem]">
+          For collaboration, please contact info@apubcc.org
+        </p>
 
-        <div className="flex gap-3">
-          {
-            Icons.map((icon, index) => (
-              <a 
-                key={index} 
-                href={icon.link}
-                target="_blank"
-                rel="noopener noreferrer" 
-                className="w-12 h-12 border-2 border-[#FF2200] rounded-full flex justify-center items-center"
-              >
-                {icon.icon}
-              </a>
-            ))
-          }
-          </div>
+        <div className="flex gap-2 md:gap-3">
+          {Icons.map((icon, index) => (
+            <a 
+              key={index} 
+              href={icon.link}
+              target="_blank"
+              rel="noopener noreferrer" 
+              className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 border-2 border-[#FF2200] rounded-full flex justify-center items-center"
+            >
+              {icon.icon}
+            </a>
+          ))}
+        </div>
       </section>
-      
-      {/* General */}
-      <section className="self-start pt-[1.4375rem]">
-         <h3 className="text-[1.5rem] font-bold text-[#FF2200]">General</h3> 
-         <div className="flex text-white text-[1.125rem] font-bold gap-10">
-          {
-            FooterLinks.map((link, index) => (
+
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-8 lg:flex lg:gap-32 xl:gap-40 lg:self-start lg:pt-[1.4375rem]">
+        {/* General */}
+        <section>
+          <h3 className="text-lg md:text-xl lg:text-[1.5rem] font-bold text-[#FF2200] mb-3 lg:mb-0">General</h3> 
+          <div className="flex flex-col lg:flex-row text-white text-sm md:text-base lg:text-[1.125rem] font-bold gap-2 lg:gap-10">
+            {FooterLinks.map((link, index) => (
               <Fragment key={index}>
-                <div className="flex flex-col gap-[0.625rem] w-40">
-                  {link.general.filter((generalLinks) => generalLinks.title !== "FAQ" && generalLinks.title !== "Contact Us").map((generalLinks, index) => (
-                    <Link key={index} href={generalLinks.link}>{generalLinks.title}</Link>
-                  ))}
+                <div className="flex flex-col gap-2 lg:gap-[0.625rem] lg:w-40">
+                  {link.general
+                    .filter((generalLinks) => generalLinks.title !== "FAQ" && generalLinks.title !== "Contact Us")
+                    .map((generalLinks, index) => (
+                      <Link key={index} href={generalLinks.link}>{generalLinks.title}</Link>
+                    ))
+                  }
                 </div>
 
-                <div className="flex flex-col gap-[0.625rem] w-24">
+                <div className="flex flex-col gap-2 lg:gap-[0.625rem] lg:w-24">
                   <Link href={link.general.find((generalLinks) => generalLinks.title === "FAQ")?.link || ""}>FAQ</Link>
                   <Link href={link.general.find((generalLinks) => generalLinks.title === "Contact Us")?.link || ""}>Contact Us</Link>
                 </div>
               </Fragment>
-            ))
-          }
-         </div>
-      </section>
-
-      {/* Resources */}
-      <section className="self-start pt-[1.4375rem]">
-        <h3 className="text-[1.5rem] font-bold text-[#FF2200]">Resources</h3>
-        <div className="flex flex-col text-white text-[1.125rem] font-bold gap-[0.625rem]">
-          {
-            FooterLinks.map((link, index) => (
-              <Fragment key={index}>
-                {link.resources.map((resourceLinks, index) => (
-                  <Fragment key={index}>
-                    <Link href={resourceLinks.link}>{resourceLinks.title}</Link>
-                  </Fragment>
-                ))}
-              </Fragment>
-            ))
-          }
-        </div>
-      </section>
-      
-    </footer>
-  )
-}
-
-function MobileFooter() {
-  return (
-    <footer className="relative block lg:hidden">
-        <section className="">
-          <Image src={"/footer-mobile-mask.svg"} alt={"footer mobile mask"} width={390} height={297} className="w-full h-[20rem]" />
+            ))}
+          </div>
         </section>
 
-        <main className="absolute top-0 left-0 flex flex-col justify-between gap-[0.9375rem] w-full h-full px-[1rem] pt-[0.6rem] pb-[1.125rem]">
-          <section>
-            <img src="/apubcc-horizontal.png" alt="APUBCC Horizontal Logo" className="bg-black rounded-[0.3125rem] w-[95px] h-[32px] md:w-[119px] md:h-[42px]" width={119} height={42}/> 
-          </section>
-
-          <section className="flex justify-between w-full h-[140px] gap-2">
-            <div className="w-[5.6875rem]">
-              <p className="text-white text-[0.6875rem] font-semibold">For collaboration, please contact info@apubcc.org</p>
-            </div>
-
-            {/* General */}
-            <div className="space-y-2">
-              <h3 className="text-[0.8125rem] font-bold">General</h3>
-              <div className="flex flex-col flex-wrap text-[#FBD954] text-[0.8125rem] font-bold h-[160px]">
-                {
-                  FooterLinks.map((link, index) => (
-                    <Fragment key={index}>
-                      {link.general.map((generalLinks, index) => (
-                        <Fragment key={index}>
-                          <Link href={generalLinks.link}>{generalLinks.title}</Link>
-                        </Fragment> 
-                      ))}
-                    </Fragment>
-                  ))
-                }
-              </div>
-            </div>
-
-            {/* Resources */}
-            <div className="space-y-2">
-              <h3 className="text-[0.8125rem] font-bold">Resources</h3>
-              <div className="flex flex-col flex-wrap text-[#FBD954] text-[0.8125rem] font-bold gap-3">
-                {
-                  FooterLinks.map((link, index) => (
-                    <Fragment key={index}>
-                      {link.resources.map((resourcesLinks, index) => (
-                        <Fragment key={index}>
-                          <Link href={resourcesLinks.link}>{resourcesLinks.title}</Link>
-                        </Fragment> 
-                      ))}
-                    </Fragment>
-                  ))
-                }
-              </div>
-            </div>
-          </section>
-
-          <section>
-            <div className="flex gap-3">
-              {
-                Icons.map((icon, index) => (
-                  <a 
-                    key={index} 
-                    href={icon.link}
-                    target="_blank"
-                    rel="noopener noreferrer" 
-                    className="w-6 h-6 border-2 border-[#F5710C] rounded-full flex justify-center items-center"
-                  >
-                    {icon.icon}
-                  </a>
-                ))
-              }
-            </div>
-          </section>
-        </main>
-      </footer>
+        {/* Resources */}
+        <section>
+          <h3 className="text-lg md:text-xl lg:text-[1.5rem] font-bold text-[#FF2200] mb-3 lg:mb-0">Resources</h3>
+          <div className="flex flex-col text-white text-sm md:text-base lg:text-[1.125rem] font-bold gap-2 lg:gap-[0.625rem]">
+            {FooterLinks.map((link, index) => (
+              <Fragment key={index}>
+                {link.resources.map((resourceLinks, index) => (
+                  <Link key={index} href={resourceLinks.link}>{resourceLinks.title}</Link>
+                ))}
+              </Fragment>
+            ))}
+          </div>
+        </section>
+      </div>
+    </footer>
   )
 }
