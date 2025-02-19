@@ -6,6 +6,7 @@ import Footer from "@/components/home/Footer";
 import Gallery from "@/components/home/Gallery";
 import Hero from "@/components/home/Hero";
 import VisionAndMission from "@/components/home/VisionsMissions";
+import ResourcesPage from "./(main)/resources/page";
 
 export default function Home() {
   return (
