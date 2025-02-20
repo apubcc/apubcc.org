@@ -11,105 +11,184 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function Hero() {
   const fireballRef = useRef<HTMLImageElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    // Timeline for scroll-based animations
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: "body",
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 1,
-        markers: false,
-        invalidateOnRefresh: true,
+    // Set initial scale based on viewport width
+    const updateFireballScale = () => {
+      const vw = window.innerWidth;
+      let scale = 1;
+      if (vw >= 1280) {
+        // xl breakpoint
+        scale = 1.5;
+      } else if (vw >= 1024) {
+        // lg breakpoint
+        scale = 1.2;
+      } else if (vw >= 768) {
+        // md breakpoint
+        scale = 0.9;
+      } else {
+        scale = 0.6;
       }
-    });
+      gsap.set(fireballRef.current, { scale });
+    };
 
-    // Add multiple animations at different scroll points
-    tl.to(fireballRef.current, {
-      scale: 1,
-      right: "30rem",
-      top: "33%",
-      duration: 1
-    })
-    .to(fireballRef.current, {
-      scale: 1.5,
-      right: "5rem",
-      top: "50%",
-      duration: 1
-    })
-    .to(fireballRef.current, {
-      scale: 0.8,
-      right: "40rem",
-      top: "40%",
-      duration: 1
-    })
-    .to(fireballRef.current, {
-      scale: 2,
-      right: "15rem",
-      top: "60%",
-      duration: 1
-    })
-    .to(fireballRef.current, {
-      scale: 1,
-      right: "30rem",
-      top: "45%",
-      duration: 1
-    });
+    // Initial scale setup
+    updateFireballScale();
 
-    // Add a continuous floating animation
+    // Update scale on window resize
+    window.addEventListener("resize", updateFireballScale);
+
+    // Continuous floating animation
     gsap.to(fireballRef.current, {
-      duration: 2,
-      x: "+=30",
-      y: "+=20",
-      rotation: 5,
+      y: "+=8",
+      duration: 1.5,
       repeat: -1,
       yoyo: true,
-      ease: "power1.inOut"
+      ease: "sine.inOut",
     });
 
-  }, { scope: containerRef });
+    // Main timeline for scroll-based animations
+    const achievementsTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#achievements-section",
+        start: "top center",
+        end: "center center",
+        scrub: 1.5,
+        markers: true,
+      },
+    });
+
+    achievementsTimeline.to(fireballRef.current, {
+      scale: (index, target) => {
+        const currentScale = gsap.getProperty(target, "scale") as number;
+        return currentScale * 0.5;
+      },
+      rotation: -90,
+      right: "55%",
+      left: "55%",
+      xPercent: -50,
+      ease: "power2.inOut",
+    });
+
+    const visionMissionTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#vision-mission-section",
+        start: "top center",
+        end: "bottom center",
+        scrub: 1,
+        markers: true,
+      },
+    });
+
+    visionMissionTimeline.to(fireballRef.current, {
+      scale: (index, target) => {
+        const currentScale = gsap.getProperty(target, "scale") as number;
+        return currentScale * 0.6;
+      },
+      duration: 1,
+      ease: "power2.inOut",
+      x: "-30vw",
+    });
+
+    const galleryTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#gallery-section",
+        start: "top center",
+        end: "bottom center",
+        scrub: 1,
+        markers: true,
+      },
+    });
+
+    galleryTimeline
+      .to(fireballRef.current, {
+        x: "-100vw",
+        duration: 0.3,
+      })
+      .to(fireballRef.current, {
+        x: "-30vw",
+        y: "-20vh",
+        rotation: 180,
+        scale: (index, target) => {
+          const currentScale = gsap.getProperty(target, "scale") as number;
+          return currentScale * 0.8;
+        },
+        duration: 0.3,
+        zIndex: -999999999,
+      })
+      .to(fireballRef.current, {
+        x: "100vw",
+        y: "50vh",
+        rotation: 360,
+        scale: (index, target) => {
+          const currentScale = gsap.getProperty(target, "scale") as number;
+          return currentScale * 0.5;
+        },
+        duration: 20,
+        zIndex: -999999999,
+        ease: "power2.inOut",
+      });
+
+    const loveGradientTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#love-gradient",
+        start: "top center",
+        end: "bottom center",
+        scrub: 1,
+        markers: true,
+      },
+    });
+
+    loveGradientTimeline.to("#love-gradient", {
+      scale: 0.9,
+      duration: 1,
+    });
+
+    // Cleanup
+    return () => {
+      window.removeEventListener("resize", updateFireballScale);
+    };
+  });
 
   return (
-    <div ref={containerRef} className="aspect-[35/16] rounded-3xl bg-[url('/hero-mobile-bg.png')] lg:bg-[url('/hero-desktop-bg.png')] bg-cover flex flex-col relative">
-      <header className="flex gap-[7px] md:h-16 xl:h-32 items-center justify-center">
-        <section className="w-[102px] md:w-[180px] lg:w-[200px] xl:w-[28rem]">
-          <img src="/apubcc-horizontal.png" alt="apubcc horizontal logo" className="w-full h-full object-contain" />
+    <div className="relative flex aspect-[36/18] flex-col rounded-3xl bg-[url('/hero-mobile-bg.png')] bg-cover lg:bg-[url('/hero-desktop-bg.png')]">
+      <header className="flex items-center justify-center gap-[7px] md:h-16 xl:h-20">
+        <section className="w-[102px] md:w-[180px] lg:w-[200px] xl:w-[18rem]">
+          <img
+            src="/apubcc-horizontal.png"
+            alt="apubcc horizontal logo"
+            className="h-full w-full object-contain"
+          />
         </section>
 
-        <section className="flex items-center gap-5 justify-end w-full pr-[10px] pl-10">
-          <Navbar className="lg:w-[33rem] lg:h-[2.69rem] xl:w-full xl:h-[3.5rem] lg:flex hidden">
+        <section className="flex w-full items-center justify-end gap-5 pl-14 pr-[10px]">
+          <Navbar className="hidden lg:flex lg:h-[2.69rem] lg:w-[33rem] xl:h-[3.5rem] xl:w-full">
             <NavbarItem href="/events">Events</NavbarItem>
             <NavbarItem href="/resources">Resources</NavbarItem>
             <NavbarItem href="/about-us">About Us</NavbarItem>
             <NavbarItem href="/contact-us">Contact Us</NavbarItem>
           </Navbar>
 
-          <Button className="lg:flex hidden bg-white text-black text-[1.3125rem] font-bold leading-normal rounded-[20px] border border-[#FF2200] shadow-[0_0_30px_0_#FF2200] py-6">
+          <Button className="hidden rounded-[20px] border border-[#FF2200] bg-white py-6 text-[1.3125rem] font-bold leading-normal text-black shadow-[0_0_30px_0_#FF2200] lg:flex">
             Join Us
           </Button>
         </section>
       </header>
 
-      <main className="relative flex-1 flex items-center px-6 xl:px-[5rem]">
-        <h1 className="text-black text-xl md:text-5xl lg:text-[3.4375rem] xl:text-[4.5rem] xl:leading-[6rem] xl:w-[45rem] font-extrabold w-[13.1875rem] md:w-[30rem] lg:w-[37.75rem] tracking-[1.1px] text-stroke-1 text-stroke-black relative z-10">
+      <main className="relative flex flex-1 items-center px-6 xl:px-[5rem]">
+        <h1 className="relative z-10 w-[13.1875rem] text-xl font-extrabold tracking-[1.1px] text-black text-stroke-1 text-stroke-black md:w-[30rem] md:text-5xl lg:w-[37.75rem] lg:text-[3.4375rem] xl:w-[35rem] xl:text-[3.5rem] xl:leading-[6rem]">
           LEADING SOUTHEAST ASIA STUDENT BLOCKCHAIN CLUB
         </h1>
 
-        <img
-          ref={fireballRef}
-          src="/fireball.png"
-          alt="fireball image"
-          className="fixed right-[30rem] xl:right-[20rem] top-[13rem] transform z-[1]
-            w-[150px] h-[150px]    /* smallest screens */
-            min-[425px]:w-[200px] min-[425px]:h-[200px]    /* small screens */
-            sm:w-[250px] sm:h-[250px]    /* small screens */
-            md:w-[280px] md:h-[280px]    /* medium screens */
-            lg:w-[350px] lg:h-[350px]    /* large screens */
-            xl:w-[39rem] xl:h-[39rem]    /* extra large screens */
-            object-contain"               /* maintains aspect ratio */
-        />
+        {/* Fireball container to maintain space */}
+        <div className="fixed right-[30rem] top-[13rem] h-[120px] w-[120px] md:h-[150px] md:w-[150px] lg:h-[180px] lg:w-[180px] xl:right-[25rem] xl:top-[rem] xl:h-[300px] xl:w-[300px]">
+          <img
+            ref={fireballRef}
+            src="/fireball.png"
+            alt="fireball image"
+            className="h-full w-full origin-center transform object-contain"
+          />
+        </div>
       </main>
     </div>
   );

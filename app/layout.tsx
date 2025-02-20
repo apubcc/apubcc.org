@@ -24,7 +24,7 @@ export default function RootLayout({
     <ViewTransitions>
       <html lang="en">
         <body
-          className={cn("antialiased bg-black", nunito.className)}
+          className={cn("antialiased bg-[#050200]", nunito.className)}
         >
           <Providers>
             {children}

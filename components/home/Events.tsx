@@ -47,54 +47,31 @@ const events: Event[] = [
 ];
 // Main Events Component
 export default function Events() {
-
   return (
-    <>
-      <div className="text-white pb-[1.125rem] lg:pb-[4.875rem]">
+    <div className="relative z-10">
+      <div className="text-white">
         <section className="pb-[0.6875rem]">
           <hr className="bg-gradient-to-r from-[#F9C646] to-[#F8A02A] w-[6.25rem] lg:w-[11.875rem] h-[0.1875rem]"/>
           <h2 className="text-[1.375rem] lg:text-[2.375rem] font-black text-white">Upcoming Events</h2>
         </section>
         
         {/* Events List */}
-        <div className="flex gap-[20px] max-w-6xl">
+        <div className="flex gap-[20px]">
           <Carousel className="w-full">
             <CarouselContent>
               {events.map((event) => (
-                <CarouselItem key={event.id} className="sm:basis-[15.1875rem] md:basis-1/2 lg:basis-[45%]">
+                <CarouselItem key={event.id} className="sm:basis-[15.1875rem] md:basis-1/2 lg:basis-[40%] xl:basis-[28.5714285714%]">
                   <EventCard event={event} />
                 </CarouselItem>
               ))}
             </CarouselContent>
           </Carousel>
         </div>
-      </div>
 
-      <div className="h-auto max-h-[49.125rem] grid grid-cols-2 grid-auto-rows lg:grid-cols-4 gap-3">
-        <div className="col-span-1 row-span-2 aspect-[3/5] lg:aspect-auto lg:row-span-2">
-          <img src="/1.png" alt="Gallery 1" className="object-cover h-full w-full" />
-        </div>
-        <div className="aspect-square">
-          <img src="/2.png" alt="Gallery 2" className="object-cover h-full w-full" />
-        </div>
-        <div className="hidden lg:block aspect-square lg:col-span-2 lg:aspect-auto">
-          <img src="/3.png" alt="Gallery 3" className="object-cover h-full w-full" />
-        </div>
-        <div className="col-span-2 hidden lg:block aspect-[2/1] lg:aspect-auto lg:col-span-2">
-          <img src="/4.png" alt="Gallery 4" className="object-cover h-full w-full" />
-        </div>
-
-        <div className="col-start-2 row-span-2 aspect-[3/5] lg:col-start-auto lg:aspect-auto lg:row-span-2">
-          <img src="/5.png" alt="Gallery 5" className="object-cover h-full w-full" />
-        </div>
-        <div className="col-span-2 hidden lg:block aspect-[2/1] lg:aspect-auto lg:col-span-2">
-          <img src="/6.png" alt="Gallery 6" className="object-cover h-full w-full" />
-        </div>
-        <div className="aspect-square lg:aspect-auto">
-          <img src="/7.png" alt="Gallery 7" className="object-cover h-full w-full" />
-        </div>
+        
+        
       </div>
-    </>
+    </div>
   );
 }
 

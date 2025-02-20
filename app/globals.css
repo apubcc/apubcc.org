@@ -77,16 +77,13 @@ body {
   }
 }
 
-
-
-
 .vision {
   float: right;
-  shape-outside: url('/vision.png');
+  shape-outside: url("/vision.png");
   shape-margin: 2rem;
 }
 .mission {
   float: left;
-  shape-outside: url('/mission.png');
+  shape-outside: url("/mission.png");
   shape-margin: 2rem;
 }
