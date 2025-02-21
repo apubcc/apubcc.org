@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Navbar, NavbarItem } from "../custom/navbar";
 import { Button } from "../ui/button";
+import { Link } from "next-view-transitions";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -27,7 +28,7 @@ export default function Hero() {
         // md breakpoint
         scale = 0.9;
       } else {
-        scale = 0.6;
+        scale = 0.8;
       }
       gsap.set(fireballRef.current, { scale });
     };
@@ -129,20 +130,20 @@ export default function Hero() {
         ease: "power2.inOut",
       });
 
-    const loveGradientTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#love-gradient",
-        start: "top center",
-        end: "bottom center",
-        scrub: 1,
-        markers: true,
-      },
-    });
+    // const loveGradientTimeline = gsap.timeline({
+    //   scrollTrigger: {
+    //     trigger: "#love-gradient",
+    //     start: "top center",
+    //     end: "bottom center",
+    //     scrub: 1,
+    //     markers: true,
+    //   },
+    // });
 
-    loveGradientTimeline.to("#love-gradient", {
-      scale: 0.9,
-      duration: 1,
-    });
+    // loveGradientTimeline.to("#love-gradient", {
+    //   scale: 0.9,
+    //   duration: 1,
+    // });
 
     // Cleanup
     return () => {
@@ -151,14 +152,16 @@ export default function Hero() {
   });
 
   return (
-    <div className="relative flex aspect-[36/18] flex-col rounded-3xl bg-[url('/hero-mobile-bg.png')] bg-cover lg:bg-[url('/hero-desktop-bg.png')]">
+    <div className="relative flex aspect-[36/18] flex-col rounded-3xl bg-[url('/hero-mobile-bg.svg')] bg-cover lg:bg-[url('/hero-desktop-bg.png')]">
       <header className="flex items-center justify-center gap-[7px] md:h-16 xl:h-20">
-        <section className="w-[102px] md:w-[180px] lg:w-[200px] xl:w-[18rem]">
-          <img
-            src="/apubcc-horizontal.png"
-            alt="apubcc horizontal logo"
-            className="h-full w-full object-contain"
-          />
+        <section className="w-[180px] md:w-[180px] lg:w-[200px] xl:w-[18rem]">
+          <Link href="/">
+            <img
+              src="/apubcc-horizontal.png"
+              alt="apubcc horizontal logo"
+              className="h-full w-full object-contain"
+            />
+          </Link>
         </section>
 
         <section className="flex w-full items-center justify-end gap-5 pl-14 pr-[10px]">
@@ -181,7 +184,7 @@ export default function Hero() {
         </h1>
 
         {/* Fireball container to maintain space */}
-        <div className="fixed right-[30rem] top-[13rem] h-[120px] w-[120px] md:h-[150px] md:w-[150px] lg:h-[180px] lg:w-[180px] xl:right-[25rem] xl:top-[rem] xl:h-[300px] xl:w-[300px]">
+        <div className="fixed -right-24 h-[280px] w-[280px] md:h-[150px] md:w-[150px] lg:right-[30rem] lg:top-[13rem] lg:h-[180px] lg:w-[180px] xl:right-[25rem] xl:top-[rem] xl:h-[300px] xl:w-[300px]">
           <img
             ref={fireballRef}
             src="/fireball.png"

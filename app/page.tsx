@@ -12,21 +12,21 @@ export default function Home() {
     <Lenis>
       <section
         id="hero-section"
-        className="min-h-[100svh] px-[0.875rem] py-[1.8125rem] md:px-20 lg:px-52 lg:py-[3rem]"
+        className="px-[0.875rem] py-[1.8125rem] md:min-h-[100svh] md:px-20 lg:px-52 lg:py-[3rem]"
       >
         <Hero />
       </section>
 
       <section
         id="achievements-section"
-        className="min-h-[100svh] w-full px-[0.875rem] py-[1.8125rem] md:py-20"
+        className="w-full px-[0.875rem] py-[3rem] md:min-h-[100svh] md:py-20"
       >
         <Achievements />
       </section>
 
       <section
         id="vision-mission-section"
-        className="min-h-[100svh] px-7 md:px-20 lg:px-52"
+        className="px-7 md:min-h-[100svh] md:px-20 lg:px-52"
       >
         <VisionAndMission />
       </section>
@@ -36,10 +36,10 @@ export default function Home() {
         alt="some background svg"
         className="absolute -z-10"
       />
-      <div className="min-h-[100svh]">
+      <div className="md:min-h-[100svh]">
         <section
           id="events-section"
-          className="relative z-10 min-h-[10svh] px-7 md:px-20 lg:px-52"
+          className="relative z-10 px-7 md:min-h-[10svh] md:px-20 lg:px-52"
         >
           <Events />
         </section>
