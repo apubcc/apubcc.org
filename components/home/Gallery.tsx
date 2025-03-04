@@ -1,77 +1,71 @@
-"use client"
+"use client";
 
-import { cn } from "@/lib/utils"
-import { useInView } from "@react-spring/web"
-import {gsap} from "gsap"
-import {ScrollTrigger} from "gsap/ScrollTrigger"
+import { cn } from "@/lib/utils";
+import { useInView } from "@react-spring/web";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
-
-gsap.registerPlugin(useGSAP, ScrollTrigger)
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function Gallery() {
-
-  useGSAP(() => {
-    const controlGalleryFromEventsTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#events-section",
-        start: "top center",
-        end: "bottom bottom",
-        scrub: 1,
-        markers: true,
-      },
-    });
-
-    controlGalleryFromEventsTimeline.to("#gallery-section", {
-      scale: 0.8,
-      y: "-1rem",
-      duration: 3,
-      ease: "power2.inOut",
-    });
-
-    const galleryTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#gallery-section",
-        start: "top center",
-        end: "bottom bottom",
-        scrub: 1,
-        markers: true,
-      },
-    });
-
-    galleryTimeline.to("#gallery-section", {
-      scale: 0.88,
-      duration: 2,
-      ease: "power2.inOut",
-    });
-    
-  });
-
-
   return (
-    <div id="gallery-section" className={cn("grid grid-cols-2 grid-auto-rows lg:grid-cols-4 gap-3")}>
-      <div className="col-span-1 row-span-2 aspect-[3/5] lg:aspect-auto lg:row-span-2">
-        <img src="/1.png" alt="Gallery 1" className="object-cover h-full w-full" />
+    <div
+      id="gallery-section"
+      className={cn(
+        "grid-auto-rows grid grid-cols-2 gap-3 desktop:grid-cols-4",
+      )}
+    >
+      <div className="col-span-1 row-span-2 aspect-[3/5] desktop:row-span-2 desktop:aspect-auto">
+        <img
+          src="/1.png"
+          alt="Gallery 1"
+          className="h-full w-full object-cover"
+        />
       </div>
       <div className="aspect-square">
-        <img src="/2.png" alt="Gallery 2" className="object-cover h-full w-full" />
+        <img
+          src="/2.png"
+          alt="Gallery 2"
+          className="h-full w-full object-cover"
+        />
       </div>
-      <div className="hidden lg:block aspect-square lg:col-span-2 lg:aspect-auto">
-        <img src="/3.png" alt="Gallery 3" className="object-cover h-full w-full" />
+      <div className="hidden aspect-square desktop:col-span-2 desktop:block desktop:aspect-auto">
+        <img
+          src="/3.png"
+          alt="Gallery 3"
+          className="h-full w-full object-cover"
+        />
       </div>
-      <div className="col-span-2 hidden lg:block aspect-[2/1] lg:aspect-auto lg:col-span-2">
-        <img src="/4.png" alt="Gallery 4" className="object-cover h-full w-full" />
+      <div className="col-span-2 hidden aspect-[2/1] desktop:col-span-2 desktop:block desktop:aspect-auto">
+        <img
+          src="/4.png"
+          alt="Gallery 4"
+          className="h-full w-full object-cover"
+        />
       </div>
 
-      <div className="col-start-2 row-span-2 aspect-[3/5] lg:col-start-auto lg:aspect-auto lg:row-span-2">
-        <img src="/5.png" alt="Gallery 5" className="object-cover h-full w-full" />
+      <div className="col-start-2 row-span-2 aspect-[3/5] desktop:col-start-auto desktop:row-span-2 desktop:aspect-auto">
+        <img
+          src="/5.png"
+          alt="Gallery 5"
+          className="h-full w-full object-cover"
+        />
       </div>
-      <div className="col-span-2 hidden lg:block aspect-[2/1] lg:aspect-auto lg:col-span-2">
-        <img src="/6.png" alt="Gallery 6" className="object-cover h-full w-full" />
+      <div className="col-span-2 hidden aspect-[2/1] desktop:col-span-2 desktop:block desktop:aspect-auto">
+        <img
+          src="/6.png"
+          alt="Gallery 6"
+          className="h-full w-full object-cover"
+        />
       </div>
-      <div className="aspect-square lg:aspect-auto">
-        <img src="/7.png" alt="Gallery 7" className="object-cover h-full w-full" />
+      <div className="aspect-square desktop:aspect-auto">
+        <img
+          src="/7.png"
+          alt="Gallery 7"
+          className="h-full w-full object-cover"
+        />
       </div>
     </div>
-  )
+  );
 }

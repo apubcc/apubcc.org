@@ -4,7 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ViewTransitions } from "next-view-transitions";
 import Providers from "./providers";
-
+import Footer from "@/components/home/Footer";
 export const metadata: Metadata = {
   title: "APUBCC",
   description: "Asia Pacific University Blockchain and Cryptocurrency Club",
@@ -23,7 +23,12 @@ export default function RootLayout({
   return (
     <ViewTransitions>
       <html lang="en">
-        <body className={cn("bg-[#050200] antialiased", nunito.className)}>
+        <body
+          className={cn(
+            "bg-[#050200] text-white antialiased",
+            nunito.className,
+          )}
+        >
           <Providers>{children}</Providers>
         </body>
       </html>

@@ -9,9 +9,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* <Lenis> */}
-      {children}
-      {/* </Lenis> */}
+      <Lenis>{children}</Lenis>
       <ReactQueryDevtools />
     </QueryClientProvider>
   );
