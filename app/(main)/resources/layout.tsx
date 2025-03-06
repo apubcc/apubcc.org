@@ -7,7 +7,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <body
+    <main
       className={cn("text-white antialiased")}
       style={{
         background:
@@ -15,6 +15,6 @@ export default function RootLayout({
       }}
     >
       {children}
-    </body>
+    </main>
   );
 }

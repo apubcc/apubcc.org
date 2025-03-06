@@ -20,6 +20,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function Home() {
   const fireballRef = useRef<HTMLImageElement>(null);
+  const cloudRef = useRef<SVGSVGElement>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -55,7 +56,7 @@ export default function Home() {
           }
         },
         yPercent: () => {
-          return window.innerWidth < 1024 ? 190 : 0;
+          return window.innerWidth < 1024 ? 200 : 0;
         },
         xPercent: () => {
           return window.innerWidth >= 1400 ? -70 : -40;
@@ -68,17 +69,17 @@ export default function Home() {
         scrollTrigger: {
           trigger: "#vision-and-mission-section",
           start: "top 100px",
-          end: "center center",
+          end: "top 100px",
           scrub: 1.5,
           markers: false,
         },
       })
       .to(fireballRef.current, {
         ease: "power2.inOut",
-        duration: 3,
+        duration: 2,
         rotation: 90,
-        x: "-100vw",
-        y: "100vh",
+        x: "-60vw",
+        yPercent: 200,
       });
 
     gsap
@@ -88,7 +89,7 @@ export default function Home() {
           start: "top center",
           end: "bottom center",
           scrub: 1.5,
-          markers: false,
+          markers: true,
         },
       })
       .to(fireballRef.current, {
@@ -133,9 +134,66 @@ export default function Home() {
           ease: "power2.inOut",
           duration: 2,
           scale: 0.8,
-          yPercent: -20,
+          yPercent: -10,
         });
     }
+  });
+
+  useGSAP(() => {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#vision-and-mission-section",
+          start: "top 100px",
+          end: "top 100px",
+          scrub: 1.5,
+          markers: false,
+        },
+      })
+      .to(cloudRef.current, {
+        ease: "power2.inOut",
+        duration: 2,
+        scale: 0.8,
+        xPercent: -50,
+        yPercent: 100,
+        zIndex: -100,
+      });
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#events-section",
+          start: "top center",
+          end: "bottom center",
+          scrub: 1.5,
+          markers: true,
+        },
+      })
+      .to(cloudRef.current, {
+        ease: "power2.inOut",
+        duration: 3,
+        xPercent: 50,
+        yPercent: 220,
+        zIndex: -100,
+      });
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#gallery-section",
+          start: "top center",
+          end: "center center",
+          scrub: 1.5,
+          markers: true,
+        },
+      })
+      .to(cloudRef.current, {
+        ease: "power2.inOut",
+        duration: 3,
+        xPercent: -50,
+        yPercent: 300,
+        zIndex: -100,
+      });
   });
 
   useEffect(() => {
@@ -161,6 +219,7 @@ export default function Home() {
         className="relative z-50 mt-[2.5rem] h-[60svh] px-[1rem] tablet:h-[75svh] tablet:pt-[3rem] desktop:h-[100svh] desktop:pt-[10rem]"
       >
         <svg
+          ref={cloudRef}
           viewBox="0 0 390 484"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

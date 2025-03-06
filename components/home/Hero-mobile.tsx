@@ -14,7 +14,7 @@ export default function HeroMobile({ fireballRef }: HeroMobileProps) {
   return (
     <article className="relative h-full">
       <img
-        src="/hero-bg-with-logo.png"
+        src="/hero-bg-with-logo2.png"
         alt="hero-bg"
         className="object-fit absolute z-[-10] h-full w-full"
       />
@@ -33,7 +33,7 @@ export default function HeroMobile({ fireballRef }: HeroMobileProps) {
 
       {/* Desktop Navbar */}
       <div className="hidden justify-end gap-3 px-2 pt-3 tablet-lg:flex desktop:gap-5 desktop:pt-6 desktop-lg:px-6 desktop-lg:pt-10 desktop-3xl:gap-6">
-        <Navbar className="h-8 gap-5 rounded-lg px-3 desktop:h-14 desktop:gap-10 desktop:rounded-2xl desktop:px-4 desktop-lg:h-16 desktop-lg:gap-12 desktop-lg:px-6 desktop-xl:h-20 desktop-xl:rounded-3xl desktop-xl:px-8 desktop-2xl:h-20 desktop-2xl:gap-14 desktop-3xl:gap-16">
+        <Navbar className="h-8 gap-5 rounded-lg px-3 desktop:h-14 desktop:gap-10 desktop:rounded-2xl desktop:px-4 desktop-lg:h-16 desktop-lg:gap-12 desktop-xl:h-20 desktop-xl:rounded-3xl desktop-xl:px-8 desktop-2xl:h-20 desktop-2xl:gap-14 desktop-3xl:gap-16">
           <NavbarItem
             href="/events"
             className="text-[0.625rem] desktop:text-xl desktop-md:text-2xl desktop-lg:text-3xl desktop-xl:text-4xl"
