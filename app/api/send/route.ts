@@ -1,18 +1,23 @@
-import { EmailTemplate } from './EmailTemplate';
-import { Resend } from 'resend';
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import { EmailTemplate } from "./EmailTemplate";
+import { Resend } from "resend";
+import { getCloudflareContext } from "@opennextjs/cloudflare";
 
 export async function POST(req: Request) {
-
+  const API_KEY = (await getCloudflareContext()).env.RESEND_API_KEY;
+  const resend = new Resend(API_KEY);
   const { email, name, subject, message } = await req.json();
-  
+
   try {
     const { data, error } = await resend.emails.send({
-      from: 'Test <testresend@tanweihup.dev>',
-      to: ['info@tanweihup.dev'],
+      from: "Test <testresend@tanweihup.dev>",
+      to: ["info@tanweihup.dev"],
       subject: subject,
-      react: EmailTemplate({ name: name, email: email, message: message, subject: subject }),
+      react: EmailTemplate({
+        name: name,
+        email: email,
+        message: message,
+        subject: subject,
+      }),
     });
 
     if (error) {
