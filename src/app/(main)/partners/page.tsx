@@ -8,7 +8,6 @@ export default async function PartnersPage() {
 
 	await queryClient.prefetchQuery(partnersOptions);
 	const partners = queryClient.getQueryData(partnersOptions.queryKey);
-	console.log(partners);
 	return (
 		<main className="pt-32">
 			<h2 className="text-center text-2xl font-bold text-white lg:text-4xl">Partners</h2>
