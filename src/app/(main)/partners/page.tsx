@@ -3,6 +3,9 @@ import { partnersOptions } from '@/lib/notion-options';
 import { HydrationBoundary, dehydrate } from '@tanstack/react-query';
 import PartnersList from './partners-list';
 
+// This disables prerendering for this route
+export const dynamic = 'force-dynamic';
+
 export default async function PartnersPage() {
 	const queryClient = getQueryClient();
 
