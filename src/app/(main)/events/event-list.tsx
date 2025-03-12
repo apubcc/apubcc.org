@@ -21,7 +21,7 @@ export default function EventList() {
 	const [currentPage, setCurrentPage] = useState(1);
 
 	// Filter events based on the active tab and sort by date (latest first)
-	const filteredEvents = data
+	const filteredEvents = (data as any)
 		.filter((event: any) => {
 			if (activeTab === 'upcoming') {
 				return (
@@ -234,7 +234,6 @@ export default function EventList() {
 		</>
 	);
 }
-
 function EventCard({ event, status }: { event: any; status: string }) {
 	const isPastEvent = status.toLowerCase() === 'past' || status.toLowerCase() === 'completed';
 
