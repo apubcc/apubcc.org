@@ -13,6 +13,10 @@ export const eventsOptions = queryOptions({
 		return response;
 	},
 	staleTime: 1000 * 60 * 5, // 5 minutes
+	retry: false,
+	refetchOnMount: false,
+	refetchOnWindowFocus: false,
+	refetchOnReconnect: false,
 });
 
 export const ourTeamOptions = queryOptions({
@@ -22,6 +26,10 @@ export const ourTeamOptions = queryOptions({
 		return response;
 	},
 	staleTime: 1000 * 60 * 5, // 5 minutes
+	retry: false,
+	refetchOnMount: false,
+	refetchOnWindowFocus: false,
+	refetchOnReconnect: false,
 });
 
 export const partnersOptions = queryOptions({
@@ -31,4 +39,8 @@ export const partnersOptions = queryOptions({
 		return response;
 	},
 	staleTime: 1000 * 60 * 5, // 5 minutes
+	retry: false,
+	refetchOnMount: false,
+	refetchOnWindowFocus: false,
+	refetchOnReconnect: false,
 });
