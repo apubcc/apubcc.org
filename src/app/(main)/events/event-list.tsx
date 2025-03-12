@@ -12,6 +12,7 @@ import {
 	PaginationPrevious,
 } from '@/components/ui/pagination';
 import { cn } from '@/lib/utils';
+import { Link } from 'next-view-transitions';
 
 const ITEMS_PER_PAGE = 4;
 
@@ -283,14 +284,14 @@ function EventCard({ event, status }: { event: any; status: string }) {
 						</div>
 
 						{event.link && !isPastEvent ? (
-							<a
+							<Link
 								href={event.link}
 								target="_blank"
 								rel="noopener noreferrer"
 								className="block w-full rounded-md bg-[#82380B] py-1 text-center text-[0.75rem] lg:px-6 lg:text-[16px]"
 							>
 								Book Ticket
-							</a>
+							</Link>
 						) : (
 							<button
 								className={cn(

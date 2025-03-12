@@ -1,7 +1,7 @@
 'use client';
 import { cn } from '@/lib/utils';
 import { AlignJustify, X } from 'lucide-react';
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import { useState } from 'react';
 import { Button } from '../ui/button';
 export default function Navbar() {
@@ -126,7 +126,7 @@ export function NavbarDesktop() {
 				</ul>
 			</nav>
 
-			<a
+			<Link
 				href="https://forms.office.com/Pages/ResponsePage.aspx?id=owPtDy1AM0aozYswiCIlPnXexahZ7q5IsmNJl1_ZU91UNFYyQU01Mkg4TUpBMDlGUTlTTTc1VDVaSS4u&fswReload=1&fswNavStart=1741352194164"
 				target="_blank"
 				rel="noopener noreferrer"
@@ -139,7 +139,7 @@ export function NavbarDesktop() {
 				}}
 			>
 				Join Us
-			</a>
+			</Link>
 		</header>
 	);
 }
@@ -179,7 +179,7 @@ export function NavbarDesktopExcludeHome() {
 				</ul>
 			</nav>
 
-			<a
+			<Link
 				href="https://forms.office.com/Pages/ResponsePage.aspx?id=owPtDy1AM0aozYswiCIlPnXexahZ7q5IsmNJl1_ZU91UNFYyQU01Mkg4TUpBMDlGUTlTTTc1VDVaSS4u&fswReload=1&fswNavStart=1741352194164"
 				target="_blank"
 				rel="noopener noreferrer"
@@ -192,7 +192,7 @@ export function NavbarDesktopExcludeHome() {
 				}}
 			>
 				Join Us
-			</a>
+			</Link>
 		</header>
 	);
 }

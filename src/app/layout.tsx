@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { Nunito } from 'next/font/google';
 import { cn } from '@/lib/utils';
-import { unstable_ViewTransition as ViewTransition } from 'react';
+// import { unstable_ViewTransition as ViewTransition } from 'react';
+import { ViewTransitions } from 'next-view-transitions';
 
 import './globals.css';
 import Navbar from '@/components/custom/navbar';
@@ -24,7 +25,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<ViewTransition>
+		<ViewTransitions>
 			<html lang="en">
 				<body className={cn('text-white antialiased', nunito.className)}>
 					<div className="bg-[#050200] min-h-screen px-4 sm:px-6 lg:px-[5rem] xl:px-[10rem] min-[1440px]:px-[15rem] 2xl:px-[20rem] 3xl:px-[25rem] pt-12 overflow-x-hidden">
@@ -34,6 +35,6 @@ export default function RootLayout({
 					</div>
 				</body>
 			</html>
-		</ViewTransition>
+		</ViewTransitions>
 	);
 }

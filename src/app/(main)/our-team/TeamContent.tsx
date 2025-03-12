@@ -1,5 +1,5 @@
 'use client';
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import { FaLinkedin, FaXTwitter } from 'react-icons/fa6';
 import { useState, useEffect, useMemo } from 'react';
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
@@ -217,7 +217,7 @@ export default function TeamContent() {
 												)}
 												{member.linkedin && (
 													<Link
-														href={`https://www.linkedin.com/in/${member.linkedin}`}
+														href={member.linkedin}
 														target="_blank"
 														className="rounded-md p-1 text-white hover:bg-black/80 bg-black w-fit h-fit"
 													>

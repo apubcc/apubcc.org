@@ -1,13 +1,14 @@
 import { FaLinkedin, FaXTwitter } from 'react-icons/fa6';
 import { AiFillTikTok, AiFillInstagram } from 'react-icons/ai';
 import { FaFacebook, FaYoutube } from 'react-icons/fa';
+import { Link } from 'next-view-transitions';
 
 const footerItems = {
 	general: [
 		{
 			title: 'General',
 			items: ['Vision & Mission', 'Partners', 'Our Team', 'FAQ', 'Contact Us'],
-			link: ['/#vision-mission', '/partners', '/#our-team', '/#faq', '/contact-us'],
+			link: ['/#vision-mission', '/partners', '/our-team', '/#faq', '/contact-us'],
 		},
 	],
 	resources: [
@@ -81,29 +82,33 @@ function FooterDesktop() {
 					<div className="flex gap-2">
 						{Icons.map((icon) => (
 							<div key={icon.link} className="rounded-full w-[2rem] h-[2rem] relative">
-								<a
+								<Link
 									href={icon.link}
 									className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#FF2200]"
 									target="_blank"
 									rel="noopener noreferrer"
 								>
 									{icon.icon}
-								</a>
+								</Link>
 							</div>
 						))}
 					</div>
 				</div>
 				{Object.entries(footerItems).map(([key, items]) => (
 					<div key={key} className="lg:pt-10 lg:flex lg:flex-col lg:items-end">
-						{items.map((item, index) => (
-							<div key={index} className="lg:flex lg:flex-col lg:gap-6">
+						{items.map((item) => (
+							<div key={item.title} className="lg:flex lg:flex-col lg:gap-6">
 								<h1 className="text-[#FF2200] text-xl font-bold lg:text-2xl">{item.title}</h1>
 								<ul className="flex flex-col gap-2">
-									{item.items.map((i) => (
+									{item.items.map((i, idx) => (
 										<li key={i} className="text-sm font-bold lg:text-base">
-											<a href={item.link[index]} target="_blank" rel="noopener noreferrer">
-												{i}
-											</a>
+											{key === 'general' ? (
+												<Link href={item.link[idx]}>{i}</Link>
+											) : (
+												<Link href={item.link[idx]} target="_blank" rel="noopener noreferrer">
+													{i}
+												</Link>
+											)}
 										</li>
 									))}
 								</ul>
@@ -131,13 +136,19 @@ function FooterMobile() {
 			<main className="flex gap-5 flex-col pt-[1.875rem] lg:flex-row">
 				{Object.entries(footerItems).map(([key, items]) => (
 					<div key={key}>
-						{items.map((item, index) => (
-							<div key={index}>
+						{items.map((item) => (
+							<div key={item.title}>
 								<h1 className="text-[#FF2200] text-xl font-bold">{item.title}</h1>
 								<ul className="flex flex-col gap-2">
-									{item.items.map((item) => (
-										<li key={item} className="text-sm font-bold">
-											{item}
+									{item.items.map((i, idx) => (
+										<li key={i} className="text-sm font-bold">
+											{key === 'general' ? (
+												<Link href={item.link[idx]}>{i}</Link>
+											) : (
+												<Link href={item.link[idx]} target="_blank" rel="noopener noreferrer">
+													{i}
+												</Link>
+											)}
 										</li>
 									))}
 								</ul>
@@ -151,14 +162,14 @@ function FooterMobile() {
 				<div className="flex gap-2">
 					{Icons.map((icon) => (
 						<div key={icon.link} className="rounded-full w-[2rem] h-[2rem] relative">
-							<a
+							<Link
 								href={icon.link}
 								className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#FF2200]"
 								target="_blank"
 								rel="noopener noreferrer"
 							>
 								{icon.icon}
-							</a>
+							</Link>
 						</div>
 					))}
 				</div>
