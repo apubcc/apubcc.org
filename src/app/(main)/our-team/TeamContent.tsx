@@ -109,12 +109,12 @@ export default function TeamContent() {
 
 		// For "Presidents" category, show only members with roles containing "President"
 		if (activeCategory === 'Presidents') {
-			filtered = data.filter(
+			filtered = (data as any).filter(
 				(member: any) => member.role && member.role.toLowerCase().includes('president')
 			);
 		} else {
 			// For other categories, filter by department
-			filtered = data.filter(
+			filtered = (data as any).filter(
 				(member: any) => member.department && member.department === activeCategory
 			);
 		}

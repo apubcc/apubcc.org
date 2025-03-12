@@ -5,7 +5,7 @@ import { useSuspenseQuery } from '@tanstack/react-query';
 export default function PartnersList() {
 	const { data } = useSuspenseQuery(partnersOptions);
 	// sort data by number
-	const sortedData = data?.sort((a: any, b: any) => a.number - b.number);
+	const sortedData = (data as any)?.sort((a: any, b: any) => a.number - b.number);
 	return (
 		<div className="mt-8 grid grid-cols-2 gap-4 px-4 sm:gap-8 md:grid-cols-3 lg:px-8 xl:grid-cols-4 2xl:px-16">
 			{sortedData?.map((partner: any) => (
