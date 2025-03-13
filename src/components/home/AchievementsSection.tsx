@@ -17,7 +17,7 @@ export default function AchievementsSection() {
 				trigger: '#achievements',
 				start: 'top 200px',
 				end: 'center center',
-				markers: true,
+				markers: false,
 				scrub: 1,
 			},
 		});
@@ -28,7 +28,7 @@ export default function AchievementsSection() {
 					trigger: '#vision-mission',
 					start: 'top 200px',
 					end: 'center center',
-					markers: true,
+					markers: false,
 					scrub: 1,
 				},
 			})
@@ -56,7 +56,7 @@ export default function AchievementsSection() {
 					trigger: '#upcoming-events',
 					start: 'top 200px',
 					end: 'bottom center',
-					markers: true,
+					markers: false,
 					scrub: 1,
 				},
 				yPercent: () => {
@@ -74,7 +74,7 @@ export default function AchievementsSection() {
 					trigger: '#faq',
 					start: 'top 200px',
 					end: 'center center',
-					markers: true,
+					markers: false,
 					scrub: 1,
 				},
 				yPercent: () => {
