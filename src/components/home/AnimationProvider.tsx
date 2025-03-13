@@ -31,7 +31,7 @@ export default function AnimationProvider({ children }: { children: ReactNode })
 					trigger: '#achievements',
 					start: 'top 200px',
 					end: 'center center',
-					markers: true,
+					markers: false,
 					scrub: 1,
 				},
 			})
@@ -71,7 +71,7 @@ export default function AnimationProvider({ children }: { children: ReactNode })
 					trigger: '#vision-mission',
 					start: 'top 200px',
 					end: 'center center',
-					markers: true,
+					markers: false,
 					scrub: 1,
 				},
 				scale: 0.7,
@@ -86,7 +86,7 @@ export default function AnimationProvider({ children }: { children: ReactNode })
 					trigger: '#upcoming-events',
 					start: 'top 200px',
 					end: 'bottom 200px',
-					markers: true,
+					markers: false,
 					scrub: 1,
 				},
 				scale: 0.7,
@@ -103,7 +103,7 @@ export default function AnimationProvider({ children }: { children: ReactNode })
 					trigger: '#vision-mission',
 					start: 'top 200px',
 					end: 'center center',
-					markers: true,
+					markers: false,
 					scrub: 1,
 				},
 			})
@@ -131,7 +131,7 @@ export default function AnimationProvider({ children }: { children: ReactNode })
 					trigger: '#upcoming-events',
 					start: 'top 200px',
 					end: 'bottom center',
-					markers: true,
+					markers: false,
 					scrub: 1,
 				},
 				yPercent: () => {
@@ -149,7 +149,7 @@ export default function AnimationProvider({ children }: { children: ReactNode })
 					trigger: '#faq',
 					start: 'top 200px',
 					end: 'center center',
-					markers: true,
+					markers: false,
 					scrub: 1,
 				},
 				yPercent: () => {
