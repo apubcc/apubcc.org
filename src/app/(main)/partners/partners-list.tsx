@@ -1,9 +1,27 @@
 'use client';
 import { partnersOptions } from '@/lib/notion-options';
-import { useSuspenseQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 
 export default function PartnersList() {
-	const { data } = useSuspenseQuery(partnersOptions);
+	const { data } = useQuery({
+		queryKey: ['partners'],
+		queryFn: async () => {
+			try {
+				const response = await fetch(`/api/notion/partners`);
+				if (!response.ok) {
+					throw new Error(`Failed to fetch partners: ${response.status}`);
+				}
+				return response.json();
+			} catch (error) {
+				console.error('Error fetching partners:', error);
+				return [];
+			}
+		},
+		staleTime: 1000 * 60 * 5, // 5 minutes
+		refetchOnMount: true,
+		refetchOnWindowFocus: true,
+		refetchOnReconnect: true,
+	});
 	// sort data by number
 	const sortedData = (data as any)?.sort((a: any, b: any) => a.number - b.number);
 	return (

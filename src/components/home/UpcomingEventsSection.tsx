@@ -5,9 +5,27 @@ import { useQuery } from '@tanstack/react-query';
 import { eventsOptions } from '@/lib/notion-options';
 
 export default function UpcomingEventsSection() {
-	const { data } = useQuery(eventsOptions);
+	const { data } = useQuery({
+		queryKey: ['events'],
+		queryFn: async () => {
+			try {
+				const response = await fetch(`/api/notion/events`);
+				if (!response.ok) {
+					throw new Error(`Failed to fetch events: ${response.status}`);
+				}
+				return response.json();
+			} catch (error) {
+				console.error('Error fetching events:', error);
+				return [];
+			}
+		},
+		staleTime: 1000 * 60 * 5, // 5 minutes
+		refetchOnMount: true,
+		refetchOnWindowFocus: true,
+		refetchOnReconnect: true,
+	});
 	// check if there is upcoming events using the status property
-	const upcomingEvents = data?.filter((event) => event.status === 'Upcoming');
+	const upcomingEvents = (data as any)?.filter((event: any) => event.status === 'Upcoming');
 	return (
 		<>
 			{upcomingEvents?.length ? (
@@ -27,7 +45,7 @@ export default function UpcomingEventsSection() {
 					<main className="w-full lg:mt-[4rem]">
 						<Carousel className="w-full">
 							<CarouselContent>
-								{data?.map((event) => (
+								{(data as any)?.map((event: any) => (
 									<CarouselItem className="basis-2/3 md:basis-[36%] lg:basis-[40%]" key={event.id}>
 										<EventCard event={event} />
 									</CarouselItem>

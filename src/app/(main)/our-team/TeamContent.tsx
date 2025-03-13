@@ -3,8 +3,9 @@ import { Link } from 'next-view-transitions';
 import { FaLinkedin, FaXTwitter } from 'react-icons/fa6';
 import { useState, useEffect, useMemo } from 'react';
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
-import { useSuspenseQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { ourTeamOptions } from '@/lib/notion-options';
+import { Skeleton } from '@/components/ui/skeleton';
 
 // SVG Component for active category background in mobile carousel
 const MobileActiveCategoryBackground = () => (
@@ -76,7 +77,25 @@ const categories = [
 ];
 
 export default function TeamContent() {
-	const { data } = useSuspenseQuery(ourTeamOptions);
+	const { data, isLoading, isError } = useQuery({
+		queryKey: ['ourTeam'],
+		queryFn: async () => {
+			try {
+				const response = await fetch(`/api/notion/our-team`);
+				if (!response.ok) {
+					throw new Error(`Failed to fetch team members: ${response.status}`);
+				}
+				return response.json();
+			} catch (error) {
+				console.error('Error fetching team members:', error);
+				throw error; // Re-throw to trigger error state
+			}
+		},
+		staleTime: 1000 * 60 * 5, // 5 minutes
+		refetchOnMount: true,
+		refetchOnWindowFocus: true,
+		refetchOnReconnect: true,
+	});
 	const [activeCategory, setActiveCategory] = useState('Presidents');
 	const [api, setApi] = useState<any>(null);
 
@@ -103,18 +122,18 @@ export default function TeamContent() {
 
 	// Filter and sort team members based on active category and number property
 	const filteredMembers = useMemo(() => {
-		if (!data) return [];
+		if (!data || !Array.isArray(data)) return [];
 
 		let filtered;
 
 		// For "Presidents" category, show only members with roles containing "President"
 		if (activeCategory === 'Presidents') {
-			filtered = (data as any).filter(
+			filtered = data.filter(
 				(member: any) => member.role && member.role.toLowerCase().includes('president')
 			);
 		} else {
 			// For other categories, filter by department
-			filtered = (data as any).filter(
+			filtered = data.filter(
 				(member: any) => member.department && member.department === activeCategory
 			);
 		}
@@ -189,7 +208,41 @@ export default function TeamContent() {
 
 					{/* Team Grid */}
 					<div className="flex-1">
-						{filteredMembers.length > 0 ? (
+						{isLoading ? (
+							<div className="grid grid-cols-1 gap-6 tablet:grid-cols-2 lg:grid-cols-3">
+								{/* Generate skeleton cards for loading state */}
+								{Array.from({ length: 6 }).map((_, index) => (
+									<div key={index} className="rounded-xl bg-white p-4">
+										<Skeleton className="mb-4 aspect-square rounded-lg" />
+										<div className="space-y-2">
+											<Skeleton className="h-6 w-3/4" />
+											<Skeleton className="h-4 w-1/2" />
+										</div>
+									</div>
+								))}
+							</div>
+						) : isError ? (
+							<div className="flex flex-col items-center justify-center rounded-xl bg-white/10 p-12 text-center">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									className="mb-4 h-16 w-16 text-red-500"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke="currentColor"
+								>
+									<path
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										strokeWidth={2}
+										d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+									/>
+								</svg>
+								<h3 className="mb-2 text-xl font-semibold">Failed to Load Team Members</h3>
+								<p className="text-white/70">
+									We couldn't load the team information. Please try again later.
+								</p>
+							</div>
+						) : filteredMembers.length > 0 ? (
 							<div className="grid grid-cols-1 gap-6 tablet:grid-cols-2 lg:grid-cols-3">
 								{filteredMembers.map((member: any) => (
 									<div key={member.name} className="group rounded-xl bg-white p-4 text-black">

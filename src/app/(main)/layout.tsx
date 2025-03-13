@@ -1,5 +1,5 @@
 import { NavbarDesktopExcludeHome } from '@/components/custom/navbar';
-
+import Providers from '@/app/providers';
 export default function Layout({
 	children,
 }: Readonly<{
@@ -8,7 +8,7 @@ export default function Layout({
 	return (
 		<>
 			<NavbarDesktopExcludeHome />
-			{children}
+			<Providers>{children}</Providers>
 		</>
 	);
 }

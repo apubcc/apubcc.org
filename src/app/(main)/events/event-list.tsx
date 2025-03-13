@@ -1,5 +1,5 @@
 'use client';
-import { useSuspenseQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { eventsOptions } from '@/lib/notion-options';
 import { useState } from 'react';
 import {
@@ -16,23 +16,105 @@ import { Link } from 'next-view-transitions';
 
 const ITEMS_PER_PAGE = 4;
 
+// Define event type
+interface Event {
+	id: string;
+	name: string;
+	date: string;
+	link: string;
+	status: string;
+	image: string;
+}
+
 export default function EventList() {
-	const { data } = useSuspenseQuery(eventsOptions);
+	// Use any type for now to avoid TypeScript errors with the query
+	const { data, isLoading, isError } = useQuery({
+		queryKey: ['events'],
+		queryFn: async () => {
+			try {
+				const response = await fetch(`/api/notion/events`);
+				if (!response.ok) {
+					throw new Error(`Failed to fetch events: ${response.status}`);
+				}
+				return response.json();
+			} catch (error) {
+				console.error('Error fetching events:', error);
+				return [];
+			}
+		},
+		staleTime: 1000 * 60 * 5, // 5 minutes
+		refetchOnMount: true,
+		refetchOnWindowFocus: true,
+		refetchOnReconnect: true,
+	});
+	const events = (data as Event[]) || [];
+
 	const [activeTab, setActiveTab] = useState<'upcoming' | 'past'>('upcoming');
 	const [currentPage, setCurrentPage] = useState(1);
 
+	// Handle loading state
+	if (isLoading) {
+		return (
+			<div className="flex justify-center items-center py-20">
+				<div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#F16007]"></div>
+			</div>
+		);
+	}
+
+	// Handle error state
+	if (isError) {
+		return (
+			<section className="flex flex-col items-center justify-center px-4 text-center">
+				<div className="mb-8">
+					<img
+						src="/events-rocket.png"
+						alt="Rocket Graphics"
+						className="h-24 w-24 md:h-32 md:w-32"
+					/>
+				</div>
+
+				<p className="mb-2 text-base font-bold text-white md:text-[1.25rem]">
+					Oops! Something went wrong
+				</p>
+				<p className="text-base font-bold text-white md:text-[1.25rem]">
+					We couldn't load the events. Please try again later!
+				</p>
+			</section>
+		);
+	}
+
+	// Handle empty events
+	if (!events || events.length === 0) {
+		return (
+			<section className="flex flex-col items-center justify-center px-4 text-center">
+				<div className="mb-8">
+					<img
+						src="/events-rocket.png"
+						alt="Rocket Graphics"
+						className="h-24 w-24 md:h-32 md:w-32"
+					/>
+				</div>
+
+				<p className="mb-2 text-base font-bold text-white md:text-[1.25rem]">
+					Oops! There are no events right now
+				</p>
+				<p className="text-base font-bold text-white md:text-[1.25rem]">
+					Stay tuned for updates or check back soon!
+				</p>
+			</section>
+		);
+	}
+
 	// Filter events based on the active tab and sort by date (latest first)
-	const filteredEvents = (data as any)
-		.filter((event: any) => {
+	const filteredEvents = events
+		.filter((event) => {
 			if (activeTab === 'upcoming') {
-				return (
-					event.status.toLowerCase() === 'upcoming' || event.status.toLowerCase() === 'active'
-				);
+				return event.status?.toLowerCase() === 'upcoming';
 			} else {
-				return event.status.toLowerCase() === 'past' || event.status.toLowerCase() === 'completed';
+				return event.status?.toLowerCase() === 'past';
 			}
 		})
-		.sort((a: any, b: any) => {
+		.sort((a, b) => {
 			// Parse dates for comparison
 			const dateA = parseEventDate(a.date);
 			const dateB = parseEventDate(b.date);
@@ -50,11 +132,11 @@ export default function EventList() {
 	// Helper function to parse event dates
 	function parseEventDate(dateString: string): Date {
 		// Handle different date formats
-		// This assumes dates are in format like "15 March 2024" or "March 15, 2024"
+		if (!dateString) return new Date();
+
 		try {
 			return new Date(dateString);
 		} catch (error) {
-			// If parsing fails, return current date as fallback
 			console.error('Error parsing date:', dateString);
 			return new Date();
 		}
@@ -162,7 +244,7 @@ export default function EventList() {
 			) : (
 				<>
 					<div className="relative mt-16 flex flex-col gap-6">
-						{currentEvents.map((event: any, index: number) => (
+						{currentEvents.map((event, index) => (
 							<div key={event.id} className="relative">
 								{/* Timeline connector line */}
 								{index !== currentEvents.length - 1 && (
@@ -235,8 +317,9 @@ export default function EventList() {
 		</>
 	);
 }
-function EventCard({ event, status }: { event: any; status: string }) {
-	const isPastEvent = status.toLowerCase() === 'past' || status.toLowerCase() === 'completed';
+
+function EventCard({ event, status }: { event: Event; status: string }) {
+	const isPastEvent = status?.toLowerCase() === 'past' || status?.toLowerCase() === 'completed';
 
 	return (
 		<div className="flex items-start gap-4">

@@ -8,6 +8,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 type AnimationContextType = {
 	fireballRef: React.RefObject<HTMLImageElement | null>;
+	loveBgRef: React.RefObject<HTMLImageElement | null>;
 };
 
 const AnimationContext = createContext<AnimationContextType | null>(null);
@@ -22,7 +23,7 @@ export const useAnimationContext = () => {
 
 export default function AnimationProvider({ children }: { children: ReactNode }) {
 	const fireballRef = useRef<HTMLImageElement>(null);
-
+	const loveBgRef = useRef<HTMLImageElement>(null);
 	useGSAP(() => {
 		gsap
 			.timeline({
@@ -95,7 +96,80 @@ export default function AnimationProvider({ children }: { children: ReactNode })
 				duration: 2,
 				ease: 'power2.inOut',
 			});
+
+		gsap
+			.timeline({
+				scrollTrigger: {
+					trigger: '#vision-mission',
+					start: 'top 200px',
+					end: 'center center',
+					markers: true,
+					scrub: 1,
+				},
+			})
+			.to(loveBgRef.current, {
+				yPercent: () => {
+					const windowWidth = window.innerWidth;
+					if (windowWidth >= 1420) {
+						return 80;
+					}
+					return 150;
+				},
+				xPercent: -50,
+				scale: () => {
+					const windowWidth = window.innerWidth;
+					if (windowWidth < 768) {
+						return 1.1;
+					}
+					return 0.7;
+				},
+				duration: 2,
+				ease: 'power2.inOut',
+			})
+			.to(loveBgRef.current, {
+				scrollTrigger: {
+					trigger: '#upcoming-events',
+					start: 'top 200px',
+					end: 'bottom center',
+					markers: true,
+					scrub: 1,
+				},
+				yPercent: () => {
+					const windowWidth = window.innerWidth;
+					if (windowWidth >= 1420) {
+						return 150;
+					}
+					return 330;
+				},
+				duration: 2,
+				ease: 'power2.inOut',
+			})
+			.to(loveBgRef.current, {
+				scrollTrigger: {
+					trigger: '#faq',
+					start: 'top 200px',
+					end: 'center center',
+					markers: true,
+					scrub: 1,
+				},
+				yPercent: () => {
+					const windowWidth = window.innerWidth;
+					if (windowWidth < 768) {
+						return 530;
+					} else if (windowWidth >= 1420) {
+						return 390;
+					}
+					return 330;
+				},
+				zIndex: -100,
+				duration: 2,
+				ease: 'power2.inOut',
+			});
 	});
 
-	return <AnimationContext.Provider value={{ fireballRef }}>{children}</AnimationContext.Provider>;
+	return (
+		<AnimationContext.Provider value={{ fireballRef, loveBgRef }}>
+			{children}
+		</AnimationContext.Provider>
+	);
 }
