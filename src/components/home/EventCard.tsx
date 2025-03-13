@@ -10,12 +10,14 @@ export default function EventCard({ event }: { event: any }) {
 			<div>
 				<img src={event.image} alt="image placeholder" className="h-full rounded-[0.375rem]" />
 			</div>
-			<div className="flex justify-center flex-col">
+			<div className="flex justify-center flex-col px-3">
 				<h3 className="text-[0.75rem] font-bold lg:text-[1rem]">{event.name}</h3>
 				<p className="text-[0.625rem] font-bold lg:text-[0.8rem]">{event.date}</p>
 
 				<Button className="w-full bg-[#82380B] text-white rounded-[0.375rem] h-[1.125rem] text-[0.5625rem] mt-[0.75rem] lg:h-[1.5rem] lg:text-[1rem]">
-					Book Ticket
+					<a href={event.link} target="_blank" rel="noopener noreferrer">
+						Book Ticket
+					</a>
 				</Button>
 			</div>
 		</div>

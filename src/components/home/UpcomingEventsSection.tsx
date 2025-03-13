@@ -42,14 +42,23 @@ export default function UpcomingEventsSection() {
 						/>
 						<h2 className="text-[1.375rem] font-black lg:text-[2.375rem]">Upcoming Events</h2>
 					</div>
-					<main className="w-full lg:mt-[4rem]">
+					<main className="w-full mt-5 lg:mt-[4rem]">
 						<Carousel className="w-full">
 							<CarouselContent>
-								{(data as any)?.map((event: any) => (
-									<CarouselItem className="basis-2/3 md:basis-[36%] lg:basis-[40%]" key={event.id}>
-										<EventCard event={event} />
+								{upcomingEvents?.length === 1 ? (
+									<CarouselItem className="basis-3/3 md:basis-[36%] lg:basis-[40%]">
+										<EventCard event={upcomingEvents[0]} />
 									</CarouselItem>
-								))}
+								) : (
+									upcomingEvents?.map((event: any) => (
+										<CarouselItem
+											className="basis-2/3 md:basis-[36%] lg:basis-[40%]"
+											key={event.id}
+										>
+											<EventCard event={event} />
+										</CarouselItem>
+									))
+								)}
 							</CarouselContent>
 						</Carousel>
 					</main>
