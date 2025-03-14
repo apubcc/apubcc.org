@@ -25,6 +25,7 @@ export default function HeroSection() {
 					LEADING SOUTHEAST ASIA STUDENT BLOCKCHAIN CLUB
 				</p>
 				<img
+					id="fireball"
 					ref={fireballRef}
 					src="/fireball.png"
 					alt="fireball image"

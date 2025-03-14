@@ -25,16 +25,18 @@ export default function AnimationProvider({ children }: { children: ReactNode })
 	const fireballRef = useRef<HTMLImageElement>(null);
 	const loveBgRef = useRef<HTMLImageElement>(null);
 	useGSAP(() => {
-		gsap
-			.timeline({
-				scrollTrigger: {
-					trigger: '#achievements',
-					start: 'top 200px',
-					end: 'center center',
-					markers: false,
-					scrub: 1,
-				},
-			})
+		const fireballTl1 = gsap.timeline({
+			scrollTrigger: {
+				immediateRender: false,
+				trigger: '#achievements',
+				start: 'top center',
+				end: 'bottom center',
+				markers: false,
+				scrub: 1,
+			},
+		});
+
+		fireballTl1
 			.to(fireballRef.current, {
 				rotate: -90,
 				yPercent: () => {
@@ -67,13 +69,6 @@ export default function AnimationProvider({ children }: { children: ReactNode })
 				ease: 'power2.inOut',
 			})
 			.to(fireballRef.current, {
-				scrollTrigger: {
-					trigger: '#vision-mission',
-					start: 'top 200px',
-					end: 'center center',
-					markers: false,
-					scrub: 1,
-				},
 				scale: 0.7,
 				opacity: 0.7,
 				yPercent: 500,
@@ -82,13 +77,6 @@ export default function AnimationProvider({ children }: { children: ReactNode })
 				ease: 'power2.inOut',
 			})
 			.to(fireballRef.current, {
-				scrollTrigger: {
-					trigger: '#upcoming-events',
-					start: 'top 200px',
-					end: 'bottom 200px',
-					markers: false,
-					scrub: 1,
-				},
 				scale: 0.7,
 				opacity: 0.7,
 				yPercent: 800,
@@ -97,16 +85,17 @@ export default function AnimationProvider({ children }: { children: ReactNode })
 				ease: 'power2.inOut',
 			});
 
-		gsap
-			.timeline({
-				scrollTrigger: {
-					trigger: '#vision-mission',
-					start: 'top 200px',
-					end: 'center center',
-					markers: false,
-					scrub: 1,
-				},
-			})
+		const loveBgTl1 = gsap.timeline({
+			scrollTrigger: {
+				trigger: '#vision-mission',
+				start: 'top 200px',
+				end: 'center center',
+				markers: false,
+				scrub: 1,
+			},
+		});
+
+		loveBgTl1
 			.to(loveBgRef.current, {
 				yPercent: () => {
 					const windowWidth = window.innerWidth;
@@ -127,13 +116,6 @@ export default function AnimationProvider({ children }: { children: ReactNode })
 				ease: 'power2.inOut',
 			})
 			.to(loveBgRef.current, {
-				scrollTrigger: {
-					trigger: '#upcoming-events',
-					start: 'top 200px',
-					end: 'bottom center',
-					markers: false,
-					scrub: 1,
-				},
 				yPercent: () => {
 					const windowWidth = window.innerWidth;
 					if (windowWidth >= 1420) {
@@ -145,13 +127,6 @@ export default function AnimationProvider({ children }: { children: ReactNode })
 				ease: 'power2.inOut',
 			})
 			.to(loveBgRef.current, {
-				scrollTrigger: {
-					trigger: '#faq',
-					start: 'top 200px',
-					end: 'center center',
-					markers: false,
-					scrub: 1,
-				},
 				yPercent: () => {
 					const windowWidth = window.innerWidth;
 					if (windowWidth < 768) {
