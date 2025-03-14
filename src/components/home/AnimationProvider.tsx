@@ -29,7 +29,13 @@ export default function AnimationProvider({ children }: { children: ReactNode })
 			scrollTrigger: {
 				immediateRender: false,
 				trigger: '#achievements',
-				start: 'top center',
+				start: () => {
+					const windowWidth = window.innerWidth;
+					if (windowWidth < 768) {
+						return '200px center';
+					}
+					return 'top 100px';
+				},
 				end: 'bottom center',
 				markers: false,
 				scrub: 1,
