@@ -2,7 +2,7 @@ import ContactUsForm from './ContactUsForm';
 
 export default function ContactUsPage() {
 	return (
-		<div className="h-[80svh] px-4 py-32 md:px-6 lg:px-8">
+		<div className="h-full px-4 py-32 md:px-6 lg:px-8">
 			<div className="">
 				<main className="grid gap-12 lg:grid-cols-2">
 					{/* Contact Form Section */}

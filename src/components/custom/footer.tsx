@@ -27,7 +27,7 @@ const footerItems = {
 const Icons = [
 	{
 		icon: <FaLinkedin className="h-5 w-5" color="black" />,
-		link: 'https://linkedin.com/company/apubcc',
+		link: 'https://www.linkedin.com/company/apu-blockchain-crypto-club-apu-bcc/posts/?feedView=all',
 	},
 	{
 		icon: <AiFillTikTok className="h-5 w-5" color="black" />,
@@ -47,7 +47,7 @@ const Icons = [
 	},
 	{
 		icon: <FaXTwitter className="h-5 w-5" color="black" />,
-		link: 'https://twitter.com/apubcc',
+		link: 'https://x.com/apubcc',
 	},
 ];
 

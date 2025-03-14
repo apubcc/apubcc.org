@@ -65,13 +65,6 @@ function NavbarMobile() {
 						Events
 					</Link>
 					<Link
-						href="/resources"
-						onClick={onClose}
-						className="text-2xl font-extrabold active:text-white"
-					>
-						Resources
-					</Link>
-					<Link
 						href="/our-team"
 						onClick={onClose}
 						className="text-2xl font-extrabold active:text-white"

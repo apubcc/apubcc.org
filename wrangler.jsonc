@@ -18,7 +18,7 @@
 	},
 	"observability": {
 		"enabled": true
-	}
+	},
 	/**
 	 * Smart Placement
 	 * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
@@ -34,7 +34,11 @@
 	 * Environment Variables
 	 * https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables
 	 */
-	// "vars": { "MY_VARIABLE": "production_value" },
+	"vars": {
+		"NOTION_EVENTS_DATABASE_ID": "193497c5b2188097b1ebfdea455d1226",
+		"NOTION_OUR_TEAM_DATABASE_ID": "1b3497c5b21880b4ababe219d5371438",
+		"NOTION_PARTNERS_DATABASE_ID": "1b3497c5b2188047a5fbfe9a1518ab80"
+	}
 	/**
 	 * Note: Use secrets to store sensitive data.
 	 * https://developers.cloudflare.com/workers/configuration/secrets/

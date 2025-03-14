@@ -1,5 +1,4 @@
 'use client';
-import { partnersOptions } from '@/lib/notion-options';
 import { useQuery } from '@tanstack/react-query';
 
 export default function PartnersList() {
