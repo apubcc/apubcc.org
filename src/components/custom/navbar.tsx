@@ -93,9 +93,9 @@ function NavbarMobile() {
 
 export function NavbarDesktop() {
 	return (
-		<header className="hidden lg:flex absolute top-3 right-0 gap-3 px-3 xl:px-5 3xl:px-10">
-			<nav className="rounded-[1.25rem] bg-black px-[2.125rem] py-[0.625rem] xl:px-[3rem]">
-				<ul className="flex items-center gap-14 xl:gap-16 3xl:gap-20">
+		<header className="hidden lg:flex absolute top-3 right-0 gap-3 px-3 xl:px-3 3xl:px-7">
+			<nav className="rounded-[1.25rem] bg-black px-[2.125rem] py-[0.625rem] xl:px-[2rem]">
+				<ul className="flex items-center gap-14 xl:gap-20 3xl:gap-28">
 					<li>
 						<Link href="/events" className="text-xl font-bold">
 							Events

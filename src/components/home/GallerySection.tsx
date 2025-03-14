@@ -1,5 +1,6 @@
 'use client';
 import { cn } from '@/lib/utils';
+import { useAnimationContext } from './AnimationProvider';
 
 const galleryImages = [
 	{
@@ -33,8 +34,15 @@ const galleryImages = [
 ];
 
 export default function GallerySection() {
+	const { roundedCloudRef } = useAnimationContext();
 	return (
-		<section className="container mt-[4rem] h-[60svh] sm:h-full">
+		<section className="container mt-[4rem] h-[60svh] sm:h-full sm:scale-95 3xl:scale-75 3xl:-mt-10">
+			<img
+				src="/rounded-cloud.svg"
+				alt="rounded cloud"
+				className="absolute bottom-0 left-0"
+				ref={roundedCloudRef}
+			/>
 			<div className="grid grid-cols-2 auto-rows-fr gap-3 grid-flow-dense">
 				{galleryImages.map((image, index) => (
 					<img

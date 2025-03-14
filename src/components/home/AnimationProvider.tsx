@@ -9,6 +9,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 type AnimationContextType = {
 	fireballRef: React.RefObject<HTMLImageElement | null>;
 	loveBgRef: React.RefObject<HTMLImageElement | null>;
+	roundedCloudRef: React.RefObject<HTMLImageElement | null>;
 };
 
 const AnimationContext = createContext<AnimationContextType | null>(null);
@@ -24,6 +25,7 @@ export const useAnimationContext = () => {
 export default function AnimationProvider({ children }: { children: ReactNode }) {
 	const fireballRef = useRef<HTMLImageElement>(null);
 	const loveBgRef = useRef<HTMLImageElement>(null);
+	const roundedCloudRef = useRef<HTMLImageElement>(null);
 	useGSAP(() => {
 		const fireballTl1 = gsap.timeline({
 			scrollTrigger: {
@@ -106,17 +108,17 @@ export default function AnimationProvider({ children }: { children: ReactNode })
 				yPercent: () => {
 					const windowWidth = window.innerWidth;
 					if (windowWidth >= 1420) {
-						return 80;
+						return 90;
 					}
 					return 150;
 				},
-				xPercent: -50,
+				xPercent: 50,
 				scale: () => {
 					const windowWidth = window.innerWidth;
 					if (windowWidth < 768) {
 						return 1.1;
 					}
-					return 0.7;
+					return 0.9;
 				},
 				duration: 2,
 				ease: 'power2.inOut',
@@ -142,14 +144,24 @@ export default function AnimationProvider({ children }: { children: ReactNode })
 					}
 					return 330;
 				},
+				xPercent: 50,
 				zIndex: -100,
 				duration: 2,
 				ease: 'power2.inOut',
 			});
+
+		gsap.to(roundedCloudRef.current, {
+			scale: 2,
+			zIndex: -100,
+			duration: 2,
+			x: -300,
+			y: 200,
+			ease: 'power2.inOut',
+		});
 	});
 
 	return (
-		<AnimationContext.Provider value={{ fireballRef, loveBgRef }}>
+		<AnimationContext.Provider value={{ fireballRef, loveBgRef, roundedCloudRef }}>
 			{children}
 		</AnimationContext.Provider>
 	);
