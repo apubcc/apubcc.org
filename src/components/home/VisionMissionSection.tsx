@@ -2,7 +2,7 @@
 
 export default function VisionMissionSection() {
 	return (
-		<section id="vision-mission" className="relative container mt-[4rem] xs:mt-0 sm:h-[70svh]">
+		<section id="vision-mission" className="relative container mt-[4rem] xs:mt-0 sm:h-[70svh] lg:h-[672px] lg:w-[1024px] lg:mx-auto">
 			<img src="/vm-bg.svg" alt="vm background" className="w-full h-full hidden lg:block" />
 			<article className="flex flex-col gap-[rem] lg:absolute lg:top-[-5rem]">
 				<h2 className="text-[#ECD164] text-[1.375rem] font-black lg:text-[2.1875rem] 3xl:-mb-10">
@@ -23,7 +23,7 @@ export default function VisionMissionSection() {
 				</div>
 			</article>
 
-			<article className="flex flex-col gap-[rem] lg:absolute lg:bottom-[0rem]">
+			<article className="flex flex-col gap-[rem] lg:absolute lg:bottom-[-3rem]">
 				<div className="flex justify-between pt-10 pl-5 lg:justify-end">
 					<svg
 						className="lg:hidden block"
@@ -36,7 +36,7 @@ export default function VisionMissionSection() {
 						<rect x="0.5" y="0.5" width="17" height="17" rx="2.5" stroke="#F6AC37" />
 						<rect x="29.5" y="5.5" width="10" height="10" rx="2.5" stroke="#F5992B" />
 					</svg>
-					<h2 className="text-[#EB6701] text-[1.375rem] font-black text-right lg:text-[2.1875rem] 3xl:-mb-10">
+					<h2 className="text-[#EB6701] text-[1.375rem] font-black text-right lg:text-[2.1875rem] 3xl:-mb-3">
 						Mission
 					</h2>
 				</div>
