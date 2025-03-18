@@ -95,7 +95,7 @@ export function NavbarDesktop() {
 	return (
 		<header className="hidden lg:flex absolute top-3 right-0 gap-3 px-3 xl:px-3 3xl:px-5">
 			<nav className="rounded-[1.25rem] bg-black px-[2.125rem] py-[0.625rem] xl:px-[2rem]">
-				<ul className="flex items-center gap-14 xl:gap-20 min-[1400px]:gap-28 3xl:gap-24">
+				<ul className="flex items-center gap-14 xl:gap-20 min-[1400px]:gap-28 min-[1440px]:gap-20 3xl:gap-24">
 					<li>
 						<Link href="/events" className="text-xl font-bold min-[1800px]:text-2xl">
 							Events
