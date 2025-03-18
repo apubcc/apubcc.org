@@ -93,26 +93,26 @@ function NavbarMobile() {
 
 export function NavbarDesktop() {
 	return (
-		<header className="hidden lg:flex absolute top-3 right-0 gap-3 px-3 xl:px-3 3xl:px-7">
+		<header className="hidden lg:flex absolute top-3 right-0 gap-3 px-3 xl:px-3 3xl:px-7 min-[1800px]:px-8">
 			<nav className="rounded-[1.25rem] bg-black px-[2.125rem] py-[0.625rem] xl:px-[2rem]">
-				<ul className="flex items-center gap-14 xl:gap-20 3xl:gap-28">
+				<ul className="flex items-center gap-14 xl:gap-20 min-[1400px]:gap-28 3xl:gap-28 min-[1800px]:gap-32">
 					<li>
-						<Link href="/events" className="text-xl font-bold">
+						<Link href="/events" className="text-xl font-bold min-[1800px]:text-2xl">
 							Events
 						</Link>
 					</li>
 					<li>
-						<Link href="/our-team" className="text-xl font-bold">
+						<Link href="/our-team" className="text-xl font-bold min-[1800px]:text-2xl">
 							Our Team
 						</Link>
 					</li>
 					<li>
-						<Link href="/#faq" className="text-xl font-bold">
+						<Link href="/#faq" className="text-xl font-bold min-[1800px]:text-2xl">
 							FAQ
 						</Link>
 					</li>
 					<li>
-						<Link href="/contact-us" className="text-xl font-bold">
+						<Link href="/contact-us" className="text-xl font-bold min-[1800px]:text-2xl">
 							Contact Us
 						</Link>
 					</li>
