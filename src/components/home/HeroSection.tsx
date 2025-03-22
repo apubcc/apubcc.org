@@ -5,6 +5,8 @@ import { useAnimationContext } from './AnimationProvider';
 export default function HeroSection() {
 	const { fireballRef } = useAnimationContext();
 
+	const windowWidth = window.innerWidth;
+	console.log(windowWidth);
 	return (
 		<section className="relative container">
 			<img
